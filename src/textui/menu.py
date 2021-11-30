@@ -27,7 +27,10 @@ class Menu:
             if command == "1":
                 name = self.io.read("name: ")
                 url = self.io.read("url: ")
-                self.tip_service.create(name, url)
+                try:
+                    self.tip_service.create(name, url)
+                except Exception as e:
+                    self.io.write(e)
 
             if command == "2":
                 tips = self.tip_service.get_all()

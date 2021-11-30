@@ -7,6 +7,8 @@ class TipService:
         self.tip_repository = tip_repository
 
     def create(self, name, url):
+        if len(name) == 0:
+            raise Exception("Name cannot be empty")
         tip = Tip(name, url)
         tip_repository.create_tip(tip)
 
