@@ -13,7 +13,7 @@ class Menu:
 
     def print_commands(self):
         for command in COMMANDS:
-            self.io.write(command)
+            self.io.write(COMMANDS[command])
 
     def run(self):
         self.io.write("Welcome dear reader")
