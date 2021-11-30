@@ -6,8 +6,8 @@ from initialize_database import initialize_database
 class TestTipRepository(unittest.TestCase):
 
     def setUp(self):
-        
-        tip_repository.clear()
+        initialize_database()
+        #tip_repository.clear()
 
     def test_create(self):
         tip = Tip("book", "urli")

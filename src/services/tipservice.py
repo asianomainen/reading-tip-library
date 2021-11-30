@@ -3,8 +3,8 @@ from entities.tip import Tip
 
 class TipService:
 
-    def __init__(self):
-        self.tip_repository = tip_repository
+    def __init__(self, tip_repo=tip_repository):
+        self.tip_repository = tip_repo
 
     def create(self, name, url):
         if len(name) == 0:
