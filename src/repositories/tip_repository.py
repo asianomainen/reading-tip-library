@@ -22,5 +22,7 @@ class TipRepository:
 
     def clear(self):
         sql = "DELETE FROM Tips"
+        self._connection.execute(sql)
+        self._connection.commit()
 
 tip_repository = TipRepository()
