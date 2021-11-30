@@ -6,7 +6,7 @@ def drop_tables(connection):
 
 def create_tables(connection):
     cursor = connection.cursor()
-    cursor.execute("CREATE TABLE Tips (id INTEGER PRIMARY KEY, nimi TEXT, url TEXT)")
+    cursor.execute("CREATE TABLE Tips (id INTEGER PRIMARY KEY, name TEXT, url TEXT)")
 
 def initialize_database():
     connection = get_database_connection()
