@@ -5,3 +5,7 @@ __pycache__
 data/database.sqlite
 data/test.database.sqlite
 .env
+log.html
+log.xml
+report.html
+output.xml

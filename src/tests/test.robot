@@ -7,6 +7,7 @@ No items when 0 items added
 
 No Of Items 1 After Creating New Tip
     Input 1 Command
-    Input New Tip  newTip  newUrl
+    Input New Tip Name  newTip
+    Input New Tip Url  newUrl
     Number Of Items  1  
 
