@@ -23,4 +23,4 @@ class TestTipService(unittest.TestCase):
     def test_create_and_find_tip(self):
         self.tipservice.create("how to test", "urli")
         tips = self.tipservice.get_all()
-        self.assertEqual(tips[0].url, "urli")
+        self.assertEqual(tips[0][1].url, "urli")
