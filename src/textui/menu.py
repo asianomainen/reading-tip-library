@@ -2,7 +2,8 @@
 COMMANDS = {
     "x": "x quit",
     "1": "1 add tip",
-    "2": "2 list tips"
+    "2": "2 list tips",
+    "3": "3 modify tip"
 }
 
 class Menu:
@@ -35,4 +36,23 @@ class Menu:
             if command == "2":
                 tips = self.tip_service.get_all()
                 for tip in tips:
-                    self.io.write(f"{tip.name}, {tip.url}")
+                    id = tip[0]
+                    name = tip[1].name
+                    url = tip[1].url
+                    self.io.write(f"id:{id} {name}, {url}")
+
+            if command == "3":
+                id = self.io.read("Tip id to edit: ")
+                try:
+                    old = self.tip_service.get_tip(id)
+                    name = self.io.read("New name (leave blank to keep old): ")
+                    if len(name) == 0:
+                        name = old.name
+                    url = self.io.read("New url (leave blank to keep old): ")
+                    if len(url) == 0:
+                        url = old.url
+                        self.tip_service.edit(id, name, url)
+                except Exception as e:
+                    self.io.write(e)
+                
+
