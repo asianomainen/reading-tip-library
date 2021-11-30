@@ -32,4 +32,4 @@ class Menu:
             if command == "2":
                 tips = self.tip_service.get_all()
                 for tip in tips:
-                    self.io.write(tip.name)
+                    self.io.write(f"{tip.name}, {tip.url}")
