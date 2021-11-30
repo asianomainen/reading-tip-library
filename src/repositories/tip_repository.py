@@ -11,13 +11,24 @@ class TipRepository:
         self._connection.execute(sql, (tip.name, tip.url))
         self._connection.commit()
 
+    def edit_tip(self, id, tip):
+        sql = "UPDATE Tips SET name = ?, url = ? WHERE id == ?"
+        self._connection.execute(sql, (tip.name, tip.url, id))
+        self._connection.commit()
+
+    def find_tip(self, id):
+        sql = "SELECT * FROM Tips WHERE id = ?"
+        res = self._connection.execute(sql, (id,)).fetchone()
+        return res
+        
+
 
     def find_all(self):
         tips = []
         sql = "SELECT * FROM Tips"
         result = self._connection.execute(sql)
         for row in result:
-            tips.append(Tip(row["name"],row["url"]))
+            tips.append((row["id"] ,Tip(row["name"],row["url"])))
         return tips
 
     def clear(self):
