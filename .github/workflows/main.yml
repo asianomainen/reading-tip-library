@@ -20,6 +20,8 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
+      - name: Build program
+        run: poetry run invoke build
       - name: Run tests
         run: poetry run coverage run --branch -m pytest
       - name: Run robot tests
