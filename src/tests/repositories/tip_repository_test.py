@@ -1,10 +1,12 @@
 import unittest
 from repositories.tip_repository import tip_repository
 from entities.tip import Tip
+from initialize_database import initialize_database 
 
 class TestTipRepository(unittest.TestCase):
 
     def setUp(self):
+        
         tip_repository.clear()
 
     def test_create(self):

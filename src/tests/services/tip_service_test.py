@@ -1,5 +1,5 @@
 import unittest
-from services.tipservice import TipService
+from services.tipservice import tip_service
 from entities.tip import Tip
 
 class FakeTipRepository:
@@ -11,6 +11,7 @@ class FakeTipRepository:
 
     def create(self, name, url):
         tip = Tip(name, url)
+        self.tips.append(tip)
 
     def clear(self):
         self.tips = []
@@ -18,7 +19,7 @@ class FakeTipRepository:
 class TestTipService(unittest.TestCase):
 
     def setUp(self):
-        self.tipservice = TipService(FakeTipRepository())
+        self.tipservice = tip_service(FakeTipRepository())
 
     def test_create_and_find_tip(self):
         self.tipservice.create("how to test", "urli")
