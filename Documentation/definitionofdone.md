@@ -7,5 +7,5 @@
 - Code refactoring done
 - Code passes pylint
 - Code reviewed by peers
-- Acceptance criteria met
+- Acceptance criteria met and documented in Robot-framework syntax
 - Documentation updated when relevant
