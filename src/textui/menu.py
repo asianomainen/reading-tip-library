@@ -21,7 +21,7 @@ class Menu:
         while True:
             command = self.io.read("Command: ")
             if not command in COMMANDS:
-                self.io.write("Invalsid command")
+                self.io.write("Invalid command")
             if command == "x":
                 break
             if command == "1":
