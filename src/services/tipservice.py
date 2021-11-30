@@ -27,4 +27,7 @@ class TipService:
             raise Exception("Invalid ID")
         return Tip(tipdata["name"],tipdata["url"])
 
+    def clear(self):
+        self.tip_repository.clear()
+
 tip_service = TipService()

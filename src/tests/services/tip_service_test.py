@@ -20,6 +20,8 @@ class TestTipService(unittest.TestCase):
 
     def setUp(self):
         self.tipservice = TipService(FakeTipRepository())
+        self.tipservice.clear()
+        
 
     def test_create_and_find_tip(self):
         self.tipservice.create("how to test", "urli")
