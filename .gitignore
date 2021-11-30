@@ -2,5 +2,7 @@
 .pytest_cache
 htmlcov
 __pycache__
+data/database.sqlite
+data/test.sqlite
 .env
 .env.test
