@@ -16,3 +16,8 @@ def coverage_report(ctx):
 @task
 def build(ctx):
     ctx.run("python3 src/initialize_database.py")
+
+@task
+def robot(ctx):
+    db = "robot.database.sqlite"
+    ctx.run(f"DATABASE_FILENAME={db} robot src/tests/")
