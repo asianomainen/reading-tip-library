@@ -1,6 +1,5 @@
 
 COMMANDS = {
-    "x": "x quit",
     "1": "1 add tip",
     "2": "2 list tips",
     "3": "3 modify tip"
@@ -22,8 +21,6 @@ class Menu:
         while True:
             command = self.io.read("Command: ")
             if not command in COMMANDS:
-                self.io.write("Invalid command")
-            if command == "x":
                 break
             if command == "1":
                 name = self.io.read("name: ")

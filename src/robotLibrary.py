@@ -11,10 +11,12 @@ class robotLibrary:
         self._io = StubIO()
         self._menu = Menu(self._io, self._tip_service)
     
-    def number_of_items(self, n):
-        if len(self._tip_service.get_all()) != int(n):
-            raise AssertionError("Dont match")
-        return len(self._tip_service.get_all())
+    def output_should_contain(self, value):
+        outputs = self._io.outputs
+        if not value in outputs:
+            raise AssertionError(
+                f"Output \"{value}\" is not in {str(outputs)}"
+            )
 
     def input(self, value):
         self._io.add_input(value)
