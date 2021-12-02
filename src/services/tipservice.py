@@ -19,7 +19,7 @@ class TipService:
         self.tip_repository.edit_tip(id, tip)
 
     def get_all(self):
-        return tip_repository.find_all()
+        return self.tip_repository.find_all()
     
     def get_tip(self, id):
         tipdata = self.tip_repository.find_tip(id)
