@@ -44,4 +44,10 @@ Only Reading Tip Url Can Be Changed
     Run Application
     Output Should Contain  id:1 newTip, changedUrl
 
+Changing Reading Tip With Empty Values Does Not Change Tip
+    Create Tip
+    Change Tip With Empty Values
+    Input 2 Command
+    Run Application
+    Output Should Contain  id:1 newTip, newUrl
 

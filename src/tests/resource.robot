@@ -35,6 +35,11 @@ Change Tip Url
     Input  1
     Input New Tip  \  changedUrl
 
+Change Tip With Empty Values
+    Input 3 Command
+    Input  1
+    Input New Tip  \  \
+
 Create Three Tips
     Input 1 Command
     Input New Tip  newTip1  newUrl1
