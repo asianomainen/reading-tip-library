@@ -1,6 +1,6 @@
 # reading-tip-library
 ![GitHub Actions](https://github.com/asianomainen/reading-tip-library/workflows/CI/badge.svg)  
-
+[![codecov](https://codecov.io/gh/asianomainen/reading-tip-library/branch/main/graph/badge.svg?token=IM4BJC00JG)](https://codecov.io/gh/asianomainen/reading-tip-library)
 
 ## Installation and user guide
 -  Install: poetry install
