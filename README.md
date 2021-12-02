@@ -8,6 +8,7 @@
 -  Install: poetry install
 -  Run : poetry run invoke start
 -  Test: poetry run invoke test
--  Coverage: poetry run invoke coverage-report
+-  Coverage: poetry run invoke coverage
+-  Coverage report: poetry run invoke coverage-report
 
 ![GitHub Actions](https://github.com/asianomainen/reading-tip-library/workflows/CI/badge.svg)
