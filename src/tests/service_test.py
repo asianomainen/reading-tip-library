@@ -28,5 +28,9 @@ class TestTipService(unittest.TestCase):
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].url, "urli")
     
+    def test_create_no_name(self):
+        with self.assertRaises(Exception):
+            self.tipservice.create("", "urli")
+    
     
         
