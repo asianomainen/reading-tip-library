@@ -30,3 +30,4 @@ Reading Tip Can Be Changed
     Run Application
     Output Should Contain  id:1 changedTip, changedUrl
 
+
