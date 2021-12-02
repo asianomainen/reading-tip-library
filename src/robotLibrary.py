@@ -19,6 +19,7 @@ class robotLibrary:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
+            
     def database_should_contain_tips(self, value):
         number_of_tips = len(self._tip_service.get_all())
         if number_of_tips != int(value):

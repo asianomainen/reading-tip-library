@@ -22,3 +22,4 @@ Reading Tips Can Be Browsed
     Output Should Contain  id:1 newTip1, newUrl1
     Output Should Contain  id:2 newTip2, newUrl2
     Output Should Contain  id:3 newTip3, newUrl3
+    
