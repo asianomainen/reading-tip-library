@@ -2,6 +2,7 @@
 
 - Unit tests written and passing
 - Robot framework tests written and passing
+  - [Acceptance criteria](https://github.com/asianomainen/reading-tip-library/blob/main/src/tests/test.robot)
 - CI build passing
 - Code coverage at least 75%
 - Code refactoring done

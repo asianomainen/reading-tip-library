@@ -4,17 +4,22 @@ from entities.tip import Tip
 
 class FakeTipRepository:
     def __init__(self, tips = []):
+        self.id = 1
         self.tips = tips
 
-    def get_all(self):
+    def find_all(self):
         return self.tips
 
-    def create(self, name, url):
-        tip = Tip(name, url)
-        self.tips.append(tip)
+    def create_tip(self, tip):
+        self.tips.append((self.id, tip))
+        self.id += 1
 
     def clear(self):
         self.tips = []
+
+    def edit_tip(self, id , tip):
+        self.tips[id-1] = tip
+
 
 class TestTipService(unittest.TestCase):
 

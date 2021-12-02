@@ -10,19 +10,19 @@ class TipService:
         if len(name) == 0:
             raise Exception("Name cannot be empty")
         tip = Tip(name, url)
-        tip_repository.create_tip(tip)
+        self.tip_repository.create_tip(tip)
 
     def edit(self, id, name, url):
         if len(name) == 0:
             raise Exception("Name cannot be empty")
         tip = Tip(name, url)
-        tip_repository.edit_tip(id, tip)
+        self.tip_repository.edit_tip(id, tip)
 
     def get_all(self):
-        return tip_repository.find_all()
+        return self.tip_repository.find_all()
     
     def get_tip(self, id):
-        tipdata = tip_repository.find_tip(id)
+        tipdata = self.tip_repository.find_tip(id)
         if tipdata == None:
             raise Exception("Invalid ID")
         return Tip(tipdata["name"],tipdata["url"])

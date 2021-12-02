@@ -30,3 +30,24 @@ Reading Tip Can Be Changed
     Run Application
     Output Should Contain  id:1 changedTip, changedUrl
 
+Only Reading Tip Name Can Be Changed
+    Create Tip
+    Change Tip Name
+    Input 2 Command
+    Run Application
+    Output Should Contain  id:1 changedTip, newUrl
+
+Only Reading Tip Url Can Be Changed
+    Create Tip
+    Change Tip Url
+    Input 2 Command
+    Run Application
+    Output Should Contain  id:1 newTip, changedUrl
+
+Changing Reading Tip With Empty Values Does Not Change Tip
+    Create Tip
+    Change Tip With Empty Values
+    Input 2 Command
+    Run Application
+    Output Should Contain  id:1 newTip, newUrl
+
