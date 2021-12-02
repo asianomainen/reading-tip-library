@@ -48,7 +48,7 @@ class Menu:
                     url = self.io.read("New url (leave blank to keep old): ")
                     if len(url) == 0:
                         url = old.url
-                        self.tip_service.edit(id, name, url)
+                    self.tip_service.edit(id, name, url)
                 except Exception as e:
                     self.io.write(e)
                 
