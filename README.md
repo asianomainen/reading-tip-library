@@ -10,7 +10,6 @@
 -  Coverage report: poetry run invoke coverage-report
 
 ## Definition of Done
-https://github.com/asianomainen/reading-tip-library/blob/main/src/tests/test.robot
 - Unit tests written and passing
 - Robot framework tests written and passing
   - [Acceptance criteria](https://github.com/asianomainen/reading-tip-library/blob/main/src/tests/test.robot)
