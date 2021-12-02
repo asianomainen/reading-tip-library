@@ -23,8 +23,17 @@ Create Tip
 Change Tip
     Input 3 Command
     Input  1
-    Input  changedTip
-    Input  changedUrl
+    Input New Tip  changedTip  changedUrl
+
+Change Tip Name
+    Input 3 Command
+    Input  1
+    Input New Tip  changedTip  \
+
+Change Tip Url
+    Input 3 Command
+    Input  1
+    Input New Tip  \  changedUrl
 
 Create Three Tips
     Input 1 Command
