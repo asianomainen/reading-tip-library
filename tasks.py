@@ -10,9 +10,17 @@ def test(ctx):
     ctx.run("pytest src")
 
 @task
+def coverage(ctx):
+    ctx.run("coverage run --branch -m pytest src")
+@task
 def coverage_report(ctx):
-    ctx.run("coverage run --branch -m pytest src | coverage html")
+    ctx.run("coverage html")
 
 @task
 def build(ctx):
     ctx.run("python3 src/initialize_database.py")
+
+@task
+def robot(ctx):
+    db = "robot.database.sqlite"
+    ctx.run(f"DATABASE_FILENAME={db} robot src/tests/")
