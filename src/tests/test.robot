@@ -22,4 +22,11 @@ Reading Tips Can Be Browsed
     Output Should Contain  id:1 newTip1, newUrl1
     Output Should Contain  id:2 newTip2, newUrl2
     Output Should Contain  id:3 newTip3, newUrl3
-    
+
+Reading Tip Can Be Changed
+    Create Tip
+    Change Tip
+    Input 2 Command
+    Run Application
+    Output Should Contain  id:1 changedTip, changedUrl
+
