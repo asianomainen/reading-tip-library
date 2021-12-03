@@ -13,8 +13,6 @@ class TipService:
         self.tip_repository.create_tip(tip)
 
     def edit(self, id, name, url):
-        if len(name) == 0:
-            raise Exception("Name cannot be empty")
         tip = Tip(name, url)
         self.tip_repository.edit_tip(id, tip)
 
