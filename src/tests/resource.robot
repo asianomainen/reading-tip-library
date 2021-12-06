@@ -11,6 +11,9 @@ Input 2 Command
 Input 3 Command
     Input  3
 
+Input x Command
+    Input  x
+
 Input New Tip
     [Arguments]  ${name}  ${url}
     Input  ${name}
