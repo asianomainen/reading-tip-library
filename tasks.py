@@ -24,3 +24,7 @@ def build(ctx):
 def robot(ctx):
     db = "robot.database.sqlite"
     ctx.run(f"DATABASE_FILENAME={db} robot src/tests/")
+
+@task
+def testall(ctx):
+    ctx.run("poetry run invoke robot && poetry run invoke test")
