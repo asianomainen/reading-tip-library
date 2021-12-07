@@ -65,10 +65,16 @@ Tip Can Be Removed With Valid id
     Run Application
     Output Should Contain  Tip removed
 
-Tip Cannot Be removed With Invalid id
+Tip Cannot Be Removed With Invalid id
     Create Tip
     Remove Tip  2
     Input x Command
     Run Application
     Output Should Contain  Invalid ID
 
+Tip Cannot Be Removed With Text
+    Create Tip
+    Remove Tip  Text
+    Input x Command
+    Run Application
+    Output Should Contain  Invalid ID
