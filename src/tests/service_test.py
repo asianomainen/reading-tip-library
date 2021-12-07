@@ -27,6 +27,13 @@ class FakeTipRepository:
         tip = Tip(name, url) 
         self.tips[id-1] = (id, tip)
 
+    def remove_tip(self, id):
+        tips_before = self.tips.copy()
+        self.tips = filter(lambda tip: tip.id!=id, self.tips)
+        if tips_before == self.tips:
+            return False
+        
+        return True
 
 class TestTipService(unittest.TestCase):
 
@@ -34,6 +41,11 @@ class TestTipService(unittest.TestCase):
         self.tipservice = TipService(FakeTipRepository())
         self.tipservice.clear()
         
+    def test_remove_tip_valid_id(self):
+        self.tipservice.create("how to test", "www.test.test")
+        self.tipservice.remove_tip(1)
+        tips = self.tipservice.get_all()
+        self.assertEqual(len(tips), 0)
 
     def test_create_and_find_tip(self):
         self.tipservice.create("how to test", "www.test.test")
