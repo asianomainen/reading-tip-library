@@ -9,6 +9,8 @@ class TipService:
     def create(self, name, url):
         if len(name) == 0:
             raise Exception("Name cannot be empty")
+        if len(url) == 0 or url[0:4] != "wwww." or url[4:].count(".") != 1:
+            raise Exception("Invalid url")
         tip = Tip(name, url)
         tip_repository.create_tip(tip)
 
