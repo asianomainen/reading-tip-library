@@ -54,7 +54,7 @@ class TestTipService(unittest.TestCase):
         tips = self.tipservice.get_all()
         self.assertEqual(len(list(tips)), 1)
 
-    def test_remove_tip_no_id(self):
+    def test_remove_tip_invalid_input(self):
         self.tipservice.create("how to test", "www.test.test")
         self.tipservice.remove_tip("a")
         tips = self.tipservice.get_all()
