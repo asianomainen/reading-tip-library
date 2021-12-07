@@ -1,5 +1,6 @@
 from repositories.tip_repository import tip_repository
 from entities.tip import Tip
+import difflib
 
 class TipService:
 
