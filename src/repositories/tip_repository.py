@@ -19,6 +19,8 @@ class TipRepository:
     def find_tip(self, id):
         sql = "SELECT * FROM Tips WHERE id = ?"
         res = self._connection.execute(sql, (id,)).fetchone()
+        if res is None:
+            return None
         return (res["id"], Tip(res["name"],res["url"]))
 
     def mark_as_read(self, id, tip):
