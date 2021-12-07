@@ -1,5 +1,6 @@
 from repositories.tip_repository import tip_repository
 from entities.tip import Tip
+import difflib
 
 class TipService:
 
@@ -26,6 +27,11 @@ class TipService:
         if tipdata == None:
             raise Exception("Invalid ID")
         return Tip(tipdata["name"],tipdata["url"])
+
+    def get_close_matches(self, search):
+        tips = tip_repository.find_all()
+        matches = difflib.get_close_matches(search, map(lambda x: x[1].name, tips))
+        return filter(lambda x: x[1].name in matches, tips)
 
     def remove_tip(self, id):
         self.get_tip(id)

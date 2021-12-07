@@ -4,6 +4,7 @@ COMMANDS = {
     "2": "2 List tips",
     "3": "3 Modify tip",
     "4": "4 Remove tip",
+    "5": "5 Search tip",
     "x": "x quit"
 }
 
@@ -63,7 +64,14 @@ class Menu:
                 except Exception as e:
                     self.io.write(e)
                 
-
+            if command == "5":
+                i = self.io.read("search: ")
+                for tip in self.tip_service.get_close_matches(i):
+                    id = tip[0]
+                    name = tip[1].name
+                    url = tip[1].url
+                    self.io.write(f"id:{id} {name}, {url}")
+                
             if command == "x":
                 break
                 
