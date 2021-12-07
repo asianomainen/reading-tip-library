@@ -19,6 +19,15 @@ class robotLibrary:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
+
+    def output_should_not_contain(self, value):
+        outputs = self._io.outputs
+        for output in self._io.outputs:
+            print(output)
+        if value in outputs:
+            raise AssertionError(
+                f"Output \"{value}\" is not in {str(outputs)}"
+            )
             
     def database_should_contain_tips(self, value):
         number_of_tips = len(self._tip_service.get_all())
