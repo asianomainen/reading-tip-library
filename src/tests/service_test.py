@@ -88,4 +88,13 @@ class TestTipService(unittest.TestCase):
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].name, "how to test")
         self.assertEqual(tips[0][1].url, "edited")
-        
+
+    def test_search_matching_name(self):
+        self.tipservice.create("how to test", "www.test.test")
+        tips = self.tipservice.get_close_matches("how to test")
+        self.assertEqual(len(list(tips)), 1)  
+
+    def test_search_almost_matching_name(self):
+        self.tipservice.create("how to test", "www.test.test")
+        tips = self.tipservice.get_close_matches("how to test1")
+        self.assertEqual(len(list(tips)), 1)
