@@ -21,12 +21,12 @@ Input New Tip
 
 Create Tip
     Input 1 Command
-    Input New Tip  newTip  newUrl
+    Input New Tip  newTip  www.test.test
 
 Change Tip
     Input 3 Command
     Input  1
-    Input New Tip  changedTip  changedUrl
+    Input New Tip  changedTip  www.test.test
 
 Change Tip Name
     Input 3 Command
@@ -36,7 +36,7 @@ Change Tip Name
 Change Tip Url
     Input 3 Command
     Input  1
-    Input New Tip  \  changedUrl
+    Input New Tip  \  www.test.test
 
 Change Tip With Empty Values
     Input 3 Command
@@ -45,13 +45,13 @@ Change Tip With Empty Values
 
 Create Three Tips
     Input 1 Command
-    Input New Tip  newTip1  newUrl1
+    Input New Tip  newTip1  www.test.test
     Input 1 Command
-    Input New Tip  newTip2  newUrl2
+    Input New Tip  newTip2  www.test.test
     Input 1 Command
-    Input New Tip  newTip3  newUrl3
+    Input New Tip  newTip3  www.test.test
 
 Create Tip Without name
     Input 1 Command
-    Input New Tip  \  newUrl
+    Input New Tip  \  www.test.test
 

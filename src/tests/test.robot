@@ -22,9 +22,9 @@ Reading Tips Can Be Browsed
     Input x Command
     Run Application
     Database Should Contain Tips  3
-    Output Should Contain  id:1 newTip1, newUrl1
-    Output Should Contain  id:2 newTip2, newUrl2
-    Output Should Contain  id:3 newTip3, newUrl3
+    Output Should Contain  id:1 newTip1, www.test.test
+    Output Should Contain  id:2 newTip2, www.test.test
+    Output Should Contain  id:3 newTip3, www.test.test
 
 Reading Tip Can Be Changed
     Create Tip
@@ -32,7 +32,7 @@ Reading Tip Can Be Changed
     Input 2 Command
     Input x Command
     Run Application
-    Output Should Contain  id:1 changedTip, changedUrl
+    Output Should Contain  id:1 changedTip, www.test.test
 
 Only Reading Tip Name Can Be Changed
     Create Tip
@@ -40,7 +40,7 @@ Only Reading Tip Name Can Be Changed
     Input 2 Command
     Input x Command
     Run Application
-    Output Should Contain  id:1 changedTip, newUrl
+    Output Should Contain  id:1 changedTip, www.test.test
 
 Only Reading Tip Url Can Be Changed
     Create Tip
@@ -48,7 +48,7 @@ Only Reading Tip Url Can Be Changed
     Input 2 Command
     Input x Command
     Run Application
-    Output Should Contain  id:1 newTip, changedUrl
+    Output Should Contain  id:1 newTip, www.test.test
 
 Changing Reading Tip With Empty Values Does Not Change Tip
     Create Tip
@@ -56,5 +56,5 @@ Changing Reading Tip With Empty Values Does Not Change Tip
     Input 2 Command
     Input x Command
     Run Application
-    Output Should Contain  id:1 newTip, newUrl
+    Output Should Contain  id:1 newTip, www.test.test
 
