@@ -1,3 +1,4 @@
+
 import unittest
 from services.tipservice import TipService
 from entities.tip import Tip
@@ -28,18 +29,12 @@ class FakeTipRepository:
         self.tips[id-1] = (id, tip)
 
     def remove_tip(self, id):
+        self.tips.remove(self.tips[id-1])
         
-        try:
-            self.tips.pop(id-1)
-        except:
-            print("pieleen")
-            return
 
     def find_tip(self, id):
-            tip = self.tips[id-1][1]
-            tipdata = {"name": tip.name, "url": tip.url}
-            return tipdata
-        
+        return self.tips[id-1]
+
 class TestTipService(unittest.TestCase):
 
     def setUp(self):
@@ -56,8 +51,6 @@ class TestTipService(unittest.TestCase):
         self.tipservice.create("how to test", "www.test.test")
         with self.assertRaises(Exception):
             self.tipservice.remove_tip(5)
-        tips = self.tipservice.get_all()
-        self.assertEqual(len(list(tips)), 1)
 
     def test_remove_tip_invalid_input(self):
         self.tipservice.create("how to test", "www.test.test")
@@ -88,4 +81,3 @@ class TestTipService(unittest.TestCase):
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].name, "how to test")
         self.assertEqual(tips[0][1].url, "edited")
-        

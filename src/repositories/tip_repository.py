@@ -1,3 +1,4 @@
+
 from entities.tip import Tip
 from database_connection import get_database_connection
 
