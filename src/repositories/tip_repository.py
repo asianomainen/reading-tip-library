@@ -20,9 +20,17 @@ class TipRepository:
         sql = "SELECT * FROM Tips WHERE id = ?"
         res = self._connection.execute(sql, (id,)).fetchone()
         return res
+
+    def remove_tip(self, id):
+        sql = "DELETE FROM Tips WHERE id = ?"
+        try:
+            self._connection.execute(sql, (id))
+            self._connection.commit()
+        except Exception:
+            return False
+
+        return True
         
-
-
     def find_all(self):
         tips = []
         sql = "SELECT * FROM Tips"
