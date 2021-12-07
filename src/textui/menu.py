@@ -1,8 +1,9 @@
 
 COMMANDS = {
-    "1": "1 add tip",
-    "2": "2 list tips",
-    "3": "3 modify tip",
+    "1": "1 Add tip",
+    "2": "2 List tips",
+    "3": "3 Modify tip",
+    "4": "4 Remove tip",
     "x": "x quit"
 }
 
@@ -53,6 +54,15 @@ class Menu:
                     self.tip_service.edit(id, name, url)
                 except Exception as e:
                     self.io.write(e)
+
+            if command == "4":
+                id = self.io.read("Tip id to remove: ")
+                try:
+                    remove_status = self.tip_service.remove_tip(id)
+                    self.io.write("Tip removed")
+                except Exception as e:
+                    self.io.write(e)
+                
 
             if command == "x":
                 break
