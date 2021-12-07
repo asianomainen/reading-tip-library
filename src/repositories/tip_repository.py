@@ -23,13 +23,8 @@ class TipRepository:
 
     def remove_tip(self, id):
         sql = "DELETE FROM Tips WHERE id = ?"
-        try:
-            self._connection.execute(sql, (id))
-            self._connection.commit()
-        except Exception:
-            return False
-
-        return True
+        self._connection.execute(sql, (id,))
+        self._connection.commit()
         
     def find_all(self):
         tips = []

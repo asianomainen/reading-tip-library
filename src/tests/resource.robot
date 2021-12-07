@@ -13,6 +13,9 @@ Input 3 Command
 
 Input 5 Command
     Input  5
+    
+Input 4 Command
+    Input  4
 
 Input x Command
     Input  x
@@ -57,4 +60,9 @@ Create Three Tips
 Create Tip Without name
     Input 1 Command
     Input New Tip  \  www.test.test
+
+Remove Tip
+    [Arguments]  ${id}
+    Input 4 Command
+    Input  ${id}
 
