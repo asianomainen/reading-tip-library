@@ -36,31 +36,31 @@ class TestTipService(unittest.TestCase):
         
 
     def test_create_and_find_tip(self):
-        self.tipservice.create("how to test", "urli")
+        self.tipservice.create("how to test", "www.test.test")
         tips = self.tipservice.get_all()
-        self.assertEqual(tips[0][1].url, "urli")
+        self.assertEqual(tips[0][1].url, "www.test.test")
     
     def test_create_no_name(self):
         with self.assertRaises(Exception):
-            self.tipservice.create("", "urli")
+            self.tipservice.create("", "www.test.test")
 
     def test_edit_new_name_and_url(self):
-        self.tipservice.create("how to test", "urli")
+        self.tipservice.create("how to test", "www.test.test")
         self.tipservice.edit(1, "edited", "edited")
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].name, "edited")
         self.assertEqual(tips[0][1].url, "edited")
         
     def test_edit_new_name_and_old_url(self):
-        self.tipservice.create("how to test", "urli")
+        self.tipservice.create("how to test", "www.test.test")
         self.tipservice.edit(1, "", "edited")
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].name, "how to test")
         self.assertEqual(tips[0][1].url, "edited")
         
     def test_edit_new_name_and_url(self):
-        self.tipservice.create("how to test", "urli")
+        self.tipservice.create("how to test", "www.test.test")
         self.tipservice.edit(1, "edited", "")
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].name, "edited")
-        self.assertEqual(tips[0][1].url, "urli")
+        self.assertEqual(tips[0][1].url, "www.test.test")
