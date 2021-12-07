@@ -25,24 +25,18 @@ class TipService:
         tip = Tip(old.name, old.url, read)
         self.tip_repository.mark_as_read(id, tip)
 
-    def get_all(self):
-        return self.tip_repository.find_all()
-
-    def get_only_not_read(self):
-        return self.tip_repository.find_only_not_read(True)
-
-    def get_only_read(self):
+    def get_all(self, filter = "all"):
+        return self.tip_repository.find_all(filter)
         
-        return self.tip_repository.find_only_not_read(False)
-        
-    def get_close_matches(self, search):
-        tips = self.tip_repository.find_all()
+    def get_close_matches(self, search, search_filter = "all"):
+        tips = self.tip_repository.find_all(search_filter)
         matches = difflib.get_close_matches(search, map(lambda x: x[1].name, tips))
         return filter(lambda x: x[1].name in matches, tips)
 
     def get_tip(self, id):
-        tip = self.tip_repository.find_tip(id)
-        if tip == None:
+        try:
+            tip = self.tip_repository.find_tip(id)[1]
+        except:
             raise Exception("Invalid ID")
         return tip
 

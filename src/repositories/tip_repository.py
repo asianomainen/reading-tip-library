@@ -22,34 +22,29 @@ class TipRepository:
         res = self._connection.execute(sql, (id,)).fetchone()
         if res is None:
             return None
-        return (res["id"], Tip(res["name"],res["url"]))
+        return (res["id"], Tip(res["name"],res["url"],res["read"]))
 
     def mark_as_read(self, id, tip):
-        sql = "UPDATE Tips SET read = ? WHERE id = ?"
-        self._connection.execute(sql, (tip.read, id))
+        sql = "UPDATE Tips SET read = ? WHERE id == ?"
+        self._connection.execute(sql, (tip.read, id,))
+        self._connection.commit()
 
     def remove_tip(self, id):
         sql = "DELETE FROM Tips WHERE id = ?"
         self._connection.execute(sql, (id,))
         self._connection.commit()
-        
-    def find_only_not_read(self, only_not_read):
+
+    def find_all(self, filter = "all"):
         tips = []
-        if only_not_read:
-            sql = "SELECT * FROM Tips WHERE read = 0"
+        if filter == "all":
+            sql = "SELECT * FROM Tips"
+        elif filter == "read":
+            sql = "SELECT * FROM Tips WHERE read == 1"
         else:
-            sql = "SELECT * FROM Tips WHERE read = 1"
+            sql = "SELECT * FROM Tips WHERE read == 0"
         result = self._connection.execute(sql)
         for row in result:
-            tips.append((row["id"] ,Tip(row["name"], row["url"])))
-        return tips
-    
-    def find_all(self):
-        tips = []
-        sql = "SELECT * FROM Tips"
-        result = self._connection.execute(sql)
-        for row in result:
-            tips.append((row["id"] ,Tip(row["name"],row["url"])))
+            tips.append((row["id"] ,Tip(row["name"],row["url"],row["read"])))
         return tips
 
     def clear(self):

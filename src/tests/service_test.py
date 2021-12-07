@@ -8,8 +8,12 @@ class FakeTipRepository:
         self.id = 1
         self.tips = tips
 
-    def find_all(self):
-        return self.tips
+    def find_all(self, filter = "all"):
+        if filter == "all":
+            return self.tips
+        if filter == "read":
+            return self.find_only_not_read(False)
+        return self.find_only_not_read(True)
 
     def create_tip(self, tip):
         self.tips.append((self.id, tip))
@@ -34,6 +38,30 @@ class FakeTipRepository:
 
     def find_tip(self, id):
         return self.tips[id-1]
+
+    def mark_as_read(self, id, tip):
+        name = tip.name
+        url = tip.url
+        read = tip.read
+        if read == 0:
+            read =1
+        else:
+            read = 0
+        tip = Tip(name, url, read)
+        self.tips[id-1]= (id,tip)
+
+    def find_only_not_read(self, only_not_read):
+        tips = []
+        if only_not_read == True:
+            read = 0
+        else: 
+            read = 1
+        for tip in self.tips:
+            if tip[1].read == read:
+                print(tip[1].read)
+                tips.append(tip)
+        return tips
+
 
 class TestTipService(unittest.TestCase):
 
@@ -80,18 +108,30 @@ class TestTipService(unittest.TestCase):
         self.tipservice.edit(1, "", "edited")
         tips = self.tipservice.get_all()
         self.assertEqual(tips[0][1].name, "how to test")
-<<<<<<< HEAD
-        self.assertEqual(tips[0][1].url, "edited")
-=======
         self.assertEqual(tips[0][1].url, "edited")
 
     def test_search_matching_name(self):
         self.tipservice.create("how to test", "www.test.test")
-        tips = self.tipservice.get_close_matches("how to test")
+        tips = self.tipservice.get_close_matches("how to test", "all")
         self.assertEqual(len(list(tips)), 1)  
 
     def test_search_almost_matching_name(self):
         self.tipservice.create("how to test", "www.test.test")
-        tips = self.tipservice.get_close_matches("how to test1")
+        tips = self.tipservice.get_close_matches("how to test1", "all")
         self.assertEqual(len(list(tips)), 1)
->>>>>>> 685393b7f59d5c892f1f95a4e786b36a39886d1e
+
+    def test_mark_tip_as_read_and_find(self):
+        self.tipservice.create("how to test", "www.test.test")
+        self.tipservice.create("how to test2", "www.test.test")
+        self.tipservice.mark_as_read(0,0)
+        tips = self.tipservice.get_all("read")
+        self.assertEqual(len(list(tips)), 1)
+
+    def test_mark_read_tip_as_unread(self):
+        self.tipservice.create("how to test", "www.test.test")
+        self.tipservice.create("how to test2", "www.test.test")
+        self.tipservice.mark_as_read(0,0)
+        self.tipservice.mark_as_read(0,1)
+        self.tipservice.mark_as_read(1,0)
+        tips = self.tipservice.get_all("not read")
+        self.assertEqual(len(list(tips)), 1)
