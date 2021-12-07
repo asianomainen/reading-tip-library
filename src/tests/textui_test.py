@@ -12,8 +12,8 @@ class TestTextUi(unittest.TestCase):
 
     def test_tip_can_be_created_and_read(self):
         initialize_database()
-        io = StubIO(["1", "how to test", "testserver", "2", "x"])
+        io = StubIO(["1", "how to test", "www.test.test", "2", "x"])
         menu = Menu(io, tip_service)
         menu.run()
-        self.assertEqual(("id:1 how to test, testserver" in io.outputs), True)
+        self.assertEqual(("id:1 how to test, www.test.test" in io.outputs), True)
 
