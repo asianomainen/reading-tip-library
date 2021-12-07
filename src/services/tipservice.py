@@ -35,7 +35,7 @@ class TipService:
         return self.tip_repository.find_only_not_read(False)
         
     def get_close_matches(self, search):
-        tips = tip_repository.find_all()
+        tips = self.tip_repository.find_all()
         matches = difflib.get_close_matches(search, map(lambda x: x[1].name, tips))
         return filter(lambda x: x[1].name in matches, tips)
 
