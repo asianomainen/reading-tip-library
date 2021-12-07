@@ -47,15 +47,10 @@ class TipService:
 
     def remove_tip(self, id):
         self.get_tip(id)
-<<<<<<< HEAD
         #if not self.tip_repository.remove_tip(id):
             #raise Exception("Couldn't remove tip, check id")
         self.tip_repository.remove_tip(id)
 
-=======
-        self.tip_repository.remove_tip(id)
-        
->>>>>>> eab68a8c892939a08cdb4748854eac5ed7e2c91d
     def clear(self):
         self.tip_repository.clear()
 
