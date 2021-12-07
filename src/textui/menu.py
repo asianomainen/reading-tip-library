@@ -48,7 +48,7 @@ class Menu:
             if command == "3":
                 id = self.io.read("Tip id to edit: ")
                 try:
-                    old = self.tip_service.get_tip(id)
+                    old = self.tip_service.get_tip(id)[1]
                     name = self.io.read("New name (leave blank to keep old): ")
                     if len(name) == 0:
                         name = old.name

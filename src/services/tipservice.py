@@ -40,17 +40,22 @@ class TipService:
         return filter(lambda x: x[1].name in matches, tips)
 
     def get_tip(self, id):
-        tipdata = self.tip_repository.find_tip(id)
-        if tipdata == None:
+        tip = self.tip_repository.find_tip(id)
+        if tip == None:
             raise Exception("Invalid ID")
-        return Tip(tipdata["name"],tipdata["url"])
+        return tip
 
     def remove_tip(self, id):
         self.get_tip(id)
+<<<<<<< HEAD
         #if not self.tip_repository.remove_tip(id):
             #raise Exception("Couldn't remove tip, check id")
         self.tip_repository.remove_tip(id)
 
+=======
+        self.tip_repository.remove_tip(id)
+        
+>>>>>>> eab68a8c892939a08cdb4748854eac5ed7e2c91d
     def clear(self):
         self.tip_repository.clear()
 
