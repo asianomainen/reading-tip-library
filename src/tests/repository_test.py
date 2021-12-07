@@ -10,14 +10,14 @@ class TestTipRepository(unittest.TestCase):
         tip_repository.clear()
 
     def test_create(self):
-        tip = Tip("book", "urli")
+        tip = Tip("book", "www.test.test")
         tip_repository.create_tip(tip)
         tips = tip_repository.find_all()
 
         self.assertEqual(len(tips), 1)
     
     def test_clear(self):
-        tip = Tip("book", "urli")
+        tip = Tip("book", "www.test.test")
         tip_repository.create_tip(tip)
         tip_repository.clear()
         tips = tip_repository.find_all()
