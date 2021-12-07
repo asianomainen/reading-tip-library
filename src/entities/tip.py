@@ -1,5 +1,3 @@
-
-
 class Tip:
     def __init__(self, name, url):
         self.name = name
