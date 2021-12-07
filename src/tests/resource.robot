@@ -11,6 +11,9 @@ Input 2 Command
 Input 3 Command
     Input  3
 
+Input 5 Command
+    Input  5
+
 Input x Command
     Input  x
 
