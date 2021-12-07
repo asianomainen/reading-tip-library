@@ -7,8 +7,8 @@ class TipRepository:
         self._connection = get_database_connection()
 
     def create_tip(self, tip):
-        sql = "INSERT INTO Tips (name, url) VALUES (?, ?)"
-        self._connection.execute(sql, (tip.name, tip.url))
+        sql = "INSERT INTO Tips (name, url, read) VALUES (?, ?, ?)"
+        self._connection.execute(sql, (tip.name, tip.url, 0))
         self._connection.commit()
 
     def edit_tip(self, id, tip):
@@ -31,6 +31,17 @@ class TipRepository:
 
         return True
         
+    def find_only_not_read(self, only_not_read):
+        tips = []
+        if only_not_read:
+            sql = "SELECT * FROM Tips WHERE read = 0"
+        else:
+            sql = "SELECT * FROM Tips WHERE read = 1"
+        result = self.connection.execute(sql)
+        for row in result:
+            tips.append((row["id"] ,Tip(row["name"], row["url"])))
+        return tips
+    
     def find_all(self):
         tips = []
         sql = "SELECT * FROM Tips"

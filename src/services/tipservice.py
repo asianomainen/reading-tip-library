@@ -20,7 +20,13 @@ class TipService:
 
     def get_all(self):
         return self.tip_repository.find_all()
-    
+
+    def get_only_not_read(self):
+        self.tip_repository.find_only_not_read(True)
+
+    def get_only_read(self):
+        self.tip_repository.find_only_not_read(True)
+        
     def get_tip(self, id):
         tipdata = self.tip_repository.find_tip(id)
         if tipdata == None:

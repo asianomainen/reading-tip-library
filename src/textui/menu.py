@@ -4,7 +4,9 @@ COMMANDS = {
     "2": "2 List tips",
     "3": "3 Modify tip",
     "4": "4 Remove tip",
-    "x": "x quit"
+    "5": "5 List only non-read",
+    "6": "6 Mark tip as read",
+    "x": "x Quit"
 }
 
 class Menu:
@@ -63,6 +65,22 @@ class Menu:
                 except Exception as e:
                     self.io.write(e)
                 
+            if command == "5":
+                tips = self.tip_service.get_only_not_read()
+                for tip in tips:
+                    id = tip[0]
+                    name = tip[1].name
+                    url = tip[1].url
+                    self.io.write(f"id:{id} {name}, {url}")
+
+            if command == "5":
+                tips = self.tip_service.get_only_read()
+                for tip in tips:
+                    id = tip[0]
+                    name = tip[1].name
+                    url = tip[1].url
+                    self.io.write(f"id:{id} {name}, {url}")
+
 
             if command == "x":
                 break
