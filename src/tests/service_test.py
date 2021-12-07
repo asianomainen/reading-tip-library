@@ -28,14 +28,18 @@ class FakeTipRepository:
         self.tips[id-1] = (id, tip)
 
     def remove_tip(self, id):
+        print(id)
         try:
-            self.tips.remove(self.tips[id-1])
+            self.tips.pop(id-1)
         except:
+            print("pieleen")
             return
 
     def find_tip(self, id):
-        return self.tips[id-1]
-
+            tip = self.tips[id-1][1]
+            tipdata = {"name": tip.name, "url": tip.url}
+            return tipdata
+        
 class TestTipService(unittest.TestCase):
 
     def setUp(self):
@@ -50,13 +54,15 @@ class TestTipService(unittest.TestCase):
 
     def test_remove_tip_invalid_id(self):
         self.tipservice.create("how to test", "www.test.test")
-        self.tipservice.remove_tip(5)
+        with self.assertRaises(Exception):
+            self.tipservice.remove_tip(5)
         tips = self.tipservice.get_all()
         self.assertEqual(len(list(tips)), 1)
 
     def test_remove_tip_invalid_input(self):
         self.tipservice.create("how to test", "www.test.test")
-        self.tipservice.remove_tip("a")
+        with self.assertRaises(Exception):
+            self.tipservice.remove_tip("a")
         tips = self.tipservice.get_all()
         self.assertEqual(len(list(tips)), 1)
 
