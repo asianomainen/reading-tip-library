@@ -21,15 +21,14 @@ class TipRepository:
         res = self._connection.execute(sql, (id,)).fetchone()
         return res
 
+    def mark_as_read(self, id, tip):
+        sql = "UPDATE Tips SET read = ? WHERE id = ?"
+        self._connection.execute(sql, (tip.read, id))
+
     def remove_tip(self, id):
         sql = "DELETE FROM Tips WHERE id = ?"
-        try:
-            self._connection.execute(sql, (id))
-            self._connection.commit()
-        except Exception:
-            return False
-
-        return True
+        self._connection.execute(sql, (id,))
+        self._connection.commit()
         
     def find_only_not_read(self, only_not_read):
         tips = []
@@ -37,7 +36,7 @@ class TipRepository:
             sql = "SELECT * FROM Tips WHERE read = 0"
         else:
             sql = "SELECT * FROM Tips WHERE read = 1"
-        result = self.connection.execute(sql)
+        result = self._connection.execute(sql)
         for row in result:
             tips.append((row["id"] ,Tip(row["name"], row["url"])))
         return tips

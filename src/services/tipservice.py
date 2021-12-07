@@ -18,15 +18,22 @@ class TipService:
         tip = Tip(name, url)
         self.tip_repository.edit_tip(id, tip)
 
+    def mark_as_read(self, read, id):
+        old = self.get_tip(id)
+        tip = Tip(old.name, old.url, read)
+        self.tip_repository.mark_as_read(id, tip)
+
     def get_all(self):
         return self.tip_repository.find_all()
 
     def get_only_not_read(self):
-        self.tip_repository.find_only_not_read(True)
+        return self.tip_repository.find_only_not_read(True)
 
     def get_only_read(self):
-        self.tip_repository.find_only_not_read(True)
         
+        return self.tip_repository.find_only_not_read(False)
+        
+
     def get_tip(self, id):
         tipdata = self.tip_repository.find_tip(id)
         if tipdata == None:

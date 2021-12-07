@@ -22,3 +22,10 @@ class TestTipRepository(unittest.TestCase):
         tip_repository.clear()
         tips = tip_repository.find_all()
         self.assertEqual(len(tips), 0)
+
+    def test_remove(self):
+        tip = Tip("book", "www.test.test")
+        tip_repository.create_tip(tip)
+        tip_repository.remove_tip(1)
+        tips = tip_repository.find_all()
+        self.assertEqual(len(tips), 0)

@@ -4,8 +4,10 @@ COMMANDS = {
     "2": "2 List tips",
     "3": "3 Modify tip",
     "4": "4 Remove tip",
-    "5": "5 List only non-read",
-    "6": "6 Mark tip as read",
+    "5": "5 Search tip",
+    "6": "6 List only read",
+    "7": "7 List only non-read",
+    "8": "8 Mark tip as read",
     "x": "x Quit"
 }
 
@@ -66,20 +68,48 @@ class Menu:
                     self.io.write(e)
                 
             if command == "5":
-                tips = self.tip_service.get_only_not_read()
+                i = self.io.read("search: ")
+                for tip in self.tip_service.get_close_matches(i):
+                    id = tip[0]
+                    name = tip[1].name
+                    url = tip[1].url
+                    self.io.write(f"id:{id} {name}, {url}")
+
+            if command == "6":
+                tips = self.tip_service.get_only_read()
+                if len(tips) == 0:
+                    self.io.write("no such tips")
+                    
                 for tip in tips:
                     id = tip[0]
                     name = tip[1].name
                     url = tip[1].url
                     self.io.write(f"id:{id} {name}, {url}")
 
-            if command == "5":
-                tips = self.tip_service.get_only_read()
+            if command == "7":
+                tips = self.tip_service.get_only_not_read()
+                if len(tips) == 0:
+                    self.io.write("no such tips")
+                    return
                 for tip in tips:
                     id = tip[0]
                     name = tip[1].name
                     url = tip[1].url
                     self.io.write(f"id:{id} {name}, {url}")
+
+            if command == "8":
+                id = self.io.read("tip id to mark: ")
+                try:
+                    old = self.tip_service.get_tip(id)
+                    if old.read == 0:
+                        read = 1
+                    else:
+                        read = 0
+                    self.tip_service.mark_as_read(read, id)
+                except Exception as e:
+                    self.io.write(e)
+
+
 
 
             if command == "x":
