@@ -96,6 +96,18 @@ class TestTipService(unittest.TestCase):
         with self.assertRaises(Exception):
             self.tipservice.create("", "www.test.test")
 
+    def test_create_no_url(self):
+        with self.assertRaises(Exception):
+            self.tipservice.create("how to test", "")
+
+    def test_create_invalid_url_prefix(self):
+        with self.assertRaises(Exception):
+            self.tipservice.create("how to test", "qqq.test.test")
+
+    def test_create_invalid_url_period_amount(self):
+        with self.assertRaises(Exception):
+            self.tipservice.create("how to test", "qqq.testtest")
+
     def test_edit_new_name_and_url(self):
         self.tipservice.create("how to test", "www.test.test")
         self.tipservice.edit(1, "edited", "edited")
