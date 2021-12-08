@@ -3,11 +3,42 @@
 [![codecov](https://codecov.io/gh/asianomainen/reading-tip-library/branch/main/graph/badge.svg?token=IM4BJC00JG)](https://codecov.io/gh/asianomainen/reading-tip-library)
 
 ## Installation and user guide
--  Install: poetry install
--  Run: poetry run invoke start
--  Test: poetry run invoke test
--  Coverage: poetry run invoke coverage
--  Coverage report: poetry run invoke coverage-report
+
+#### Install dependencies
+
+```
+poetry install
+```
+
+#### Run the program
+
+```
+poetry run invoke start
+```
+
+#### Run unit tests
+
+```
+poetry run invoke test
+```
+
+#### Run Robot tests
+
+```
+poetry run invoke robot
+```
+
+#### Run code coverage raport
+
+```
+poetry run invoke coverage
+```
+
+#### Generate code coverage report
+
+```
+poetry run invoke coverage-report
+```
 
 ## Definition of Done
 - Unit tests written and passing
