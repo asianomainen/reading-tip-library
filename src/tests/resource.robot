@@ -60,6 +60,14 @@ Create Three Tips
 Create Tip Without name
     Input 1 Command
     Input New Tip  \  www.test.test
+    
+Create Tip Without url
+    Input 1 Command
+    Input New Tip  test  \ 
+
+Create Tip With Invalid url
+    Input 1 Command
+    Input New Tip  test  www.
 
 Remove Tip
     [Arguments]  ${id}
