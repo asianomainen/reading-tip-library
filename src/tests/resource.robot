@@ -20,6 +20,12 @@ Input 4 Command
 Input x Command
     Input  x
 
+Input 6 Command
+    Input  6
+
+Input 7 Command
+    Input  7
+
 Input New Tip
     [Arguments]  ${name}  ${url}
     Input  ${name}
@@ -74,3 +80,10 @@ Remove Tip
     Input 4 Command
     Input  ${id}
 
+Change Tip Read Status
+    [Arguments]  ${id}
+    Input 6 Command
+    Input  ${id}
+
+Change Read Filter Setting
+    Input 7 Command
