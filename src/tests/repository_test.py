@@ -69,6 +69,12 @@ class TestTipRepository(unittest.TestCase):
         found = tip_repository.find_tip(1)
         self.assertEqual(found[1].name, tip.name)
 
+    def test_find_with_invalid_id(self):
+        tip = Tip("book", "www.test.test")
+        tip_repository.create_tip(tip)
+        found = tip_repository.find_tip(100)
+        self.assertEqual(found, None)
+
     def test_find_all(self):
         tip1 = Tip("book", "www.test.test")
         tip_repository.create_tip(tip1)
