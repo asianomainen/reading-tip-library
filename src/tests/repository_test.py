@@ -83,3 +83,4 @@ class TestTipRepository(unittest.TestCase):
 
         tips = tip_repository.find_all()
         self.assertEqual(len(tips), 2)
+        

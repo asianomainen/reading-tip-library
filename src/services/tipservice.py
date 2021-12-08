@@ -1,7 +1,6 @@
-
+import difflib
 from repositories.tip_repository import tip_repository
 from entities.tip import Tip
-import difflib
 
 class TipService:
 
@@ -25,10 +24,10 @@ class TipService:
         tip = Tip(old.name, old.url, read)
         self.tip_repository.mark_as_read(id, tip)
 
-    def get_all(self, filter = "all"):
+    def get_all(self, filter="all"):
         return self.tip_repository.find_all(filter)
-        
-    def get_close_matches(self, search, search_filter = "all"):
+
+    def get_close_matches(self, search, search_filter="all"):
         tips = self.tip_repository.find_all(search_filter)
         matches = difflib.get_close_matches(search, map(lambda x: x[1].name, tips))
         return filter(lambda x: x[1].name in matches, tips)
@@ -43,7 +42,7 @@ class TipService:
     def remove_tip(self, id):
         self.get_tip(id)
         self.tip_repository.remove_tip(id)
-        
+
     def clear(self):
         self.tip_repository.clear()
 

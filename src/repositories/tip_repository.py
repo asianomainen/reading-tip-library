@@ -22,7 +22,7 @@ class TipRepository:
         res = self._connection.execute(sql, (id,)).fetchone()
         if res is None:
             return None
-        return (res["id"], Tip(res["name"],res["url"],res["read"]))
+        return (res["id"], Tip(res["name"], res["url"], res["read"]))
 
     def mark_as_read(self, id, tip):
         sql = "UPDATE Tips SET read = ? WHERE id == ?"
@@ -34,7 +34,7 @@ class TipRepository:
         self._connection.execute(sql, (id,))
         self._connection.commit()
 
-    def find_all(self, filter = "all"):
+    def find_all(self, filter="all"):
         tips = []
         if filter == "all":
             sql = "SELECT * FROM Tips"
@@ -44,7 +44,7 @@ class TipRepository:
             sql = "SELECT * FROM Tips WHERE read == 0"
         result = self._connection.execute(sql)
         for row in result:
-            tips.append((row["id"] ,Tip(row["name"],row["url"],row["read"])))
+            tips.append((row["id"], Tip(row["name"], row["url"], row["read"])))
         return tips
 
     def clear(self):

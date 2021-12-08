@@ -10,7 +10,7 @@ class robotLibrary:
         self._tip_service = tip_service
         self._io = StubIO()
         self._menu = Menu(self._io, self._tip_service)
-    
+
     def output_should_contain(self, value):
         outputs = self._io.outputs
         for output in self._io.outputs:
@@ -28,7 +28,7 @@ class robotLibrary:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
-            
+
     def database_should_contain_tips(self, value):
         number_of_tips = len(self._tip_service.get_all())
         if number_of_tips != int(value):
@@ -42,5 +42,3 @@ class robotLibrary:
 
     def run_application(self):
         self._menu.run()
-    
-        
