@@ -62,3 +62,18 @@ class TestTipRepository(unittest.TestCase):
         tip_repository.edit_tip(1, edited_tip)
         found_tip = tip_repository.find_tip(1)
         self.assertEqual(found_tip[1].name, "how not to test")
+
+    def test_find(self):
+        tip = Tip("book", "www.test.test")
+        tip_repository.create_tip(tip)
+        found = tip_repository.find_tip(1)
+        self.assertEqual(found[1].name, tip.name)
+
+    def test_find_all(self):
+        tip1 = Tip("book", "www.test.test")
+        tip_repository.create_tip(tip1)
+        tip2 = Tip("podcast", "www.test.test")
+        tip_repository.create_tip(tip2)
+
+        tips = tip_repository.find_all()
+        self.assertEqual(len(tips), 2)
