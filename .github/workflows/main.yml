@@ -18,6 +18,8 @@ jobs:
           python-version: 3.8
       - name: Install Poetry
         run: pip install poetry
+      - name: Install pylint
+        run: pip install pylint
       - name: Install dependencies
         run: poetry install
       - name: Build program
@@ -26,6 +28,8 @@ jobs:
         run: poetry run coverage run --branch -m pytest
       - name: Run robot tests
         run: poetry run robot src/tests
+      - name: Analysing the code with pylint
+        run: find . -name '*.py' -exec pylint {} \;
       - name: Coverage report
         run: poetry run coverage xml
       - name: Coverage report to Codecov

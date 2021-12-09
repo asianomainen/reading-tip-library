@@ -32,7 +32,7 @@ class Menu:
         self.print_commands()
 
         while True:
-            self.io.write(f"You are seeing {self.filter} tips")
+            self.io.write(f"\nYou are seeing {self.filter} tips")
             command = self.io.read("Command: ")
             if not command in COMMANDS:
                 self.io.write("Invalid command")
@@ -79,10 +79,10 @@ class Menu:
                     self.io.write("Tip removed")
                 except Exception as e:
                     self.io.write(e)
-                
+
             if command == "5":
                 i = self.io.read("search: ")
-                for tip in self.tip_service.get_close_matches(i,FILTERS[self.filter]):
+                for tip in self.tip_service.get_close_matches(i, FILTERS[self.filter]):
                     id = tip[0]
                     name = tip[1].name
                     url = tip[1].url
@@ -110,4 +110,3 @@ class Menu:
 
             if command == "x":
                 break
-                
