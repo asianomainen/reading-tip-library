@@ -31,6 +31,6 @@ jobs:
       - name: Analysing the code with pylint
         run: find . -name '*.py' -exec pylint {} \;
       - name: Coverage report
-        run: poetry run coverage xml --fail-under=99
+        run: poetry run coverage xml --fail-under=75
       - name: Coverage report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
