@@ -1,4 +1,3 @@
-
 import unittest
 from services.tipservice import TipService
 from entities.tip import Tip

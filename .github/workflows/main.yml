@@ -25,12 +25,12 @@ jobs:
       - name: Build program
         run: poetry run invoke build
       - name: Run tests
-        run: poetry run coverage run --branch -m pytest
+        run: poetry run coverage run --branch -m pytest 
       - name: Run robot tests
         run: poetry run robot src/tests
       - name: Analysing the code with pylint
         run: find . -name '*.py' -exec pylint {} \;
       - name: Coverage report
-        run: poetry run coverage xml
+        run: poetry run coverage xml --fail-under=75
       - name: Coverage report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
