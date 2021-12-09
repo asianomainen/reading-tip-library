@@ -15,17 +15,19 @@ New Reading Tip Cannot Be Created Without name
     Run Application
     Output Should Contain  Name cannot be empty
     
-New Reading Tip Cannot Be Created Without url
-    Create Tip Without Url
+New Reading Tip Cannot Be Created With Invalid url
+    Create Tip With Invalid url
+    Input x Command
     Input x Command
     Run Application
     Output Should Contain  Invalid url
 
-New Reading Tip Cannot Be Created With Invalid url
-    Create Tip With Invalid url
+New Reading Tip Cannot Be Created Without url
+    Create Tip Without url
+    Input x Command
     Input x Command
     Run Application
-    Output Should Contain  Invalid url    
+    Output Should Contain  Invalid url
 
 Reading Tips Can Be Browsed
     Database Should Contain Tips  0

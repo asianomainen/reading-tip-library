@@ -73,7 +73,7 @@ Create Tip Without url
 
 Create Tip With Invalid url
     Input 1 Command
-    Input New Tip  test  www.
+    Input New Tip  test  ww.
 
 Remove Tip
     [Arguments]  ${id}

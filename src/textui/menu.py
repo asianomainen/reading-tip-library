@@ -37,9 +37,13 @@ class Menu:
             if not command in COMMANDS:
                 self.io.write("Invalid command")
                 self.print_commands()
+
             if command == "1":
                 name = self.io.read("name: ")
                 url = self.io.read("url: ")
+                if len(url) == 0 or url[0:4] != "www." or url[4:].count(".") != 1:
+                    self.io.write("Invalid url")
+                    url = self.io.read("url: ")
                 try:
                     self.tip_service.create(name, url)
                 except Exception as e:
