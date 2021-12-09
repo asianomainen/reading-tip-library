@@ -1,4 +1,3 @@
-
 import unittest
 from services.tipservice import TipService
 from entities.tip import Tip
@@ -106,7 +105,7 @@ class TestTipService(unittest.TestCase):
 
     def test_create_invalid_url_period_amount(self):
         with self.assertRaises(Exception):
-            self.tipservice.create("how to test", "qqq.testtest")
+            self.tipservice.create("how to test", "www.testtest")
 
     def test_edit_new_name_and_url(self):
         self.tipservice.create("how to test", "www.test.test")
