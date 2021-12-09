@@ -32,7 +32,7 @@ class Menu:
         self.print_commands()
 
         while True:
-            self.io.write(f"You are seeing {self.filter} tips")
+            self.io.write(f"\nYou are seeing {self.filter} tips")
             command = self.io.read("Command: ")
             if not command in COMMANDS:
                 self.io.write("Invalid command")
