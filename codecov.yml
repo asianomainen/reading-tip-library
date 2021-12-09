@@ -9,3 +9,4 @@ coverage:
           - unit
         paths: 
           - "src"
+        if_ci_failed: error
