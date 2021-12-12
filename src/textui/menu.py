@@ -17,7 +17,7 @@ HELP= {
     "3": "3 Modify tip, modify name/ url or both based on id",
     "4": "4 Remove tip, removes tip based on id",
     "5": "5 Search tip, search for a certain tip in database",
-    "6": "6 Mark tip as read, option to mark a tip with 'read'",
+    "6": "6 Mark tip as read, option to mark a tip with read",
     "7": "7 Cycle filter, modify filter determining what tips are displayed",
     "h": "h Help",
     "x": "x Quit, exit reading-tip library"
