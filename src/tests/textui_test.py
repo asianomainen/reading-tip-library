@@ -17,3 +17,12 @@ class TestTextUi(unittest.TestCase):
         menu.run()
         self.assertEqual(("id:1 how to test, www.test.test" in io.outputs), True)
 
+    
+    def test_display_help(self):
+        initialize_database()
+        io = StubIO(["h", "x"])
+        menu = Menu(io, tip_service)
+        menu.run()
+        print(io.outputs)
+        self.assertEqual(("1 Add tip, tip can be added if name is not empty and url is valid" in io.outputs), True)
+        
