@@ -7,7 +7,20 @@ COMMANDS = {
     "5": "5 Search tip",
     "6": "6 Mark tip as read",
     "7": "7 Cycle filter",
+    "h": "h Help",
     "x": "x Quit"
+}
+
+HELP= {
+    "1": "1 Add tip, tip can be added if name is not empty and url is valid",
+    "2": "2 List tips, lists all tips",
+    "3": "3 Modify tip, modify name/ url or both based on id",
+    "4": "4 Remove tip, removes tip based on id",
+    "5": "5 Search tip, search for a certain tip in database",
+    "6": "6 Mark tip as read, option to mark a tip with 'read'",
+    "7": "7 Cycle filter, modify filter determining what tips are displayed",
+    "h": "h Help",
+    "x": "x Quit, exit reading-tip library"
 }
 
 FILTERS = {
@@ -23,8 +36,13 @@ class Menu:
         self.filter = "ALL"
 
     def print_commands(self):
+        self.io.write("")
         for command in COMMANDS:
             self.io.write(COMMANDS[command])
+    
+    def print_help(self):
+        for help in HELP:
+            self.io.write(HELP[help])
 
 
     def run(self):
@@ -107,6 +125,12 @@ class Menu:
                     self.filter = "READ"
                 elif self.filter == "READ":
                     self.filter = "ALL"
+            
+            if command == "h":
+                self.print_help()
 
             if command == "x":
                 break
+
+            self.io.write("")
+            self.print_commands()

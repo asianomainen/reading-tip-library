@@ -26,6 +26,9 @@ Input 6 Command
 Input 7 Command
     Input  7
 
+Input h Command
+    Input  h
+
 Input New Tip
     [Arguments]  ${name}  ${url}
     Input  ${name}

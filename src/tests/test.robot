@@ -177,3 +177,8 @@ Filtered Tip Shows In Search
     Input x Command
     Run Application
     Output Should Contain  id:1 newTip1, www.test.test
+
+Reading Tips Display Help
+    Input h Command
+    Input x Command
+    Run Application
