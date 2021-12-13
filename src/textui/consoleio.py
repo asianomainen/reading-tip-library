@@ -5,3 +5,4 @@ class ConsoleIO:
 
     def write(text):
         print(text)
+        

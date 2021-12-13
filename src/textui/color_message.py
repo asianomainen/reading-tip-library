@@ -17,3 +17,4 @@ class Color_message:
 
     def yellow(text):
         return f"{Colors.YELLOW}{text}{Colors.END}"
+        
