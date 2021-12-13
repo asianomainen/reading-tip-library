@@ -12,33 +12,33 @@ class TipRepository:
         self._connection.execute(sql, (tip.name, tip.url, 0))
         self._connection.commit()
 
-    def edit_tip(self, id, tip):
+    def edit_tip(self, tip_id, tip):
         sql = "UPDATE Tips SET name = ?, url = ? WHERE id == ?"
-        self._connection.execute(sql, (tip.name, tip.url, id))
+        self._connection.execute(sql, (tip.name, tip.url, tip_id))
         self._connection.commit()
 
-    def find_tip(self, id):
+    def find_tip(self, tip_id):
         sql = "SELECT * FROM Tips WHERE id = ?"
-        res = self._connection.execute(sql, (id,)).fetchone()
+        res = self._connection.execute(sql, (tip_id,)).fetchone()
         if res is None:
             return None
         return (res["id"], Tip(res["name"], res["url"], res["read"]))
 
-    def mark_as_read(self, id, tip):
+    def mark_as_read(self, tip_id, tip):
         sql = "UPDATE Tips SET read = ? WHERE id == ?"
-        self._connection.execute(sql, (tip.read, id,))
+        self._connection.execute(sql, (tip.read, tip_id,))
         self._connection.commit()
 
-    def remove_tip(self, id):
+    def remove_tip(self, tip_id):
         sql = "DELETE FROM Tips WHERE id = ?"
-        self._connection.execute(sql, (id,))
+        self._connection.execute(sql, (tip_id,))
         self._connection.commit()
 
-    def find_all(self, filter="all"):
+    def find_all(self, filters="all"):
         tips = []
-        if filter == "all":
+        if filters == "all":
             sql = "SELECT * FROM Tips"
-        elif filter == "read":
+        elif filters == "read":
             sql = "SELECT * FROM Tips WHERE read == 1"
         else:
             sql = "SELECT * FROM Tips WHERE read == 0"
