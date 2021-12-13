@@ -15,33 +15,33 @@ class TipService:
         tip = Tip(name, url)
         self.tip_repository.create_tip(tip)
 
-    def edit(self, id, name, url):
+    def edit(self, tip_id, name, url):
         tip = Tip(name, url)
-        self.tip_repository.edit_tip(id, tip)
+        self.tip_repository.edit_tip(tip_id, tip)
 
-    def mark_as_read(self, read, id):
-        old = self.get_tip(id)
+    def mark_as_read(self, read, tip_id):
+        old = self.get_tip(tip_id)
         tip = Tip(old.name, old.url, read)
-        self.tip_repository.mark_as_read(id, tip)
+        self.tip_repository.mark_as_read(tip_id, tip)
 
-    def get_all(self, filter="all"):
-        return self.tip_repository.find_all(filter)
+    def get_all(self, filters="all"):
+        return self.tip_repository.find_all(filters)
 
-    def get_close_matches(self, search, search_filter="all"):
-        tips = self.tip_repository.find_all(search_filter)
+    def get_close_matches(self, search, filters="all"):
+        tips = self.tip_repository.find_all(filters)
         matches = difflib.get_close_matches(search, map(lambda x: x[1].name, tips))
         return filter(lambda x: x[1].name in matches, tips)
 
-    def get_tip(self, id):
+    def get_tip(self, tip_id):
         try:
-            tip = self.tip_repository.find_tip(id)[1]
+            tip = self.tip_repository.find_tip(tip_id)[1]
         except:
             raise Exception("Invalid ID")
         return tip
 
-    def remove_tip(self, id):
-        self.get_tip(id)
-        self.tip_repository.remove_tip(id)
+    def remove_tip(self, tip_id):
+        self.get_tip(tip_id)
+        self.tip_repository.remove_tip(tip_id)
 
     def clear(self):
         self.tip_repository.clear()
