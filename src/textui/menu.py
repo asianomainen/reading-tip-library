@@ -99,7 +99,7 @@ class Menu:
             if command == "4":
                 tip_id = self.io.read("Tip id to remove: ")
                 try:
-                    remove_status = self.tip_service.remove_tip(tip_id)
+                    self.tip_service.remove_tip(tip_id)
                     self.io.write(self.color_message.green("Tip removed"))
                 except Exception as e:
                     self.io.write(self.color_message.red(e))
