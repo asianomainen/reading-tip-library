@@ -39,11 +39,11 @@ class TipRepository:
         self._connection.execute(sql, (tip_id,))
         self._connection.commit()
 
-    def find_all(self, filter="all"):
+    def find_all(self, filters="all"):
         tips = []
-        if filter == "all":
+        if filters == "all":
             sql = "SELECT * FROM Tips"
-        elif filter == "read":
+        elif filters == "read":
             sql = "SELECT * FROM Tips WHERE read == 1"
         else:
             sql = "SELECT * FROM Tips WHERE read == 0"
