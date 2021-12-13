@@ -24,3 +24,7 @@ def build(ctx):
 def robot(ctx):
     db = "robot.database.sqlite"
     ctx.run(f"DATABASE_FILENAME={db} robot src/tests/")
+
+@task
+def pylint(ctx):
+    ctx.run("pylint src")
