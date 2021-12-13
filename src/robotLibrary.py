@@ -2,6 +2,7 @@ from stub_io import StubIO
 from textui.menu import Menu
 from services.tipservice import tip_service
 from initialize_database import initialize_database, reset_database
+from textui.color_message import Color_message
 
 class robotLibrary:
     def __init__(self):
@@ -9,21 +10,35 @@ class robotLibrary:
         reset_database()
         self._tip_service = tip_service
         self._io = StubIO()
-        self._menu = Menu(self._io, self._tip_service)
+        self.color_message = Color_message
+        self._menu = Menu(self._io, self._tip_service, self.color_message)
 
     def output_should_contain(self, value):
         outputs = self._io.outputs
-        for output in self._io.outputs:
-            print(output)
         if not value in outputs:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
 
+    def output_should_contain_colored(self, color, text):
+        message = ""
+        if color == "cyan":
+            message = self.color_message.cyan(text)
+        if color == "red":
+            message = self.color_message.red(text)
+        if color == "green":
+            message = self.color_message.green(text)
+        if color == "yellow":
+            message = self.color_message.yellow(text)
+        self.output_should_contain(message)
+
+    def output_should_contain_help(self):
+        help_messages = self._menu.get_help()
+        for help in help_messages:
+            self.output_should_contain(help)
+
     def output_should_not_contain(self, value):
         outputs = self._io.outputs
-        for output in self._io.outputs:
-            print(output)
         if value in outputs:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"

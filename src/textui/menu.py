@@ -1,4 +1,3 @@
-
 COMMANDS = {
     "1": "1 Add tip",
     "2": "2 List tips",
@@ -30,42 +29,49 @@ FILTERS = {
 }
 
 class Menu:
-    def __init__(self, io, tip_service):
+    def __init__(self, io, tip_service, color_message):
         self.io = io
         self.tip_service = tip_service
         self.filter = "ALL"
+        self.color_message = color_message
 
     def print_commands(self):
         self.io.write("")
         for command in COMMANDS:
-            self.io.write(COMMANDS[command])
+            self.io.write(self.color_message.cyan(COMMANDS[command]))
     
     def print_help(self):
         for help in HELP:
             self.io.write(HELP[help])
 
+    def get_help(self):
+        help_messages = []
+        for help in HELP:
+            help_messages.append(HELP[help])
+        
+        return help_messages
 
     def run(self):
         self.io.write("Welcome dear reader")
         self.print_commands()
 
         while True:
-            self.io.write(f"\nYou are seeing {self.filter} tips")
-            command = self.io.read("Command: ")
+            self.io.write(self.color_message.yellow(f"\nYou are seeing {self.filter} tips"))
+            command = self.io.read(self.color_message.cyan("Command: "))
             if not command in COMMANDS:
-                self.io.write("Invalid command")
+                self.io.write(self.color_message.cyan("Invalid command"))
                 self.print_commands()
 
             if command == "1":
                 name = self.io.read("name: ")
                 url = self.io.read("url: ")
                 if len(url) == 0 or url[0:4] != "www." or url[4:].count(".") != 1:
-                    self.io.write("Invalid url")
+                    self.io.write(self.color_message.red("Invalid url"))
                     url = self.io.read("url: ")
                 try:
                     self.tip_service.create(name, url)
                 except Exception as e:
-                    self.io.write(e)
+                    self.io.write(self.color_message.red(e))
 
             if command == "2":
                 tips = self.tip_service.get_all(FILTERS[self.filter])
@@ -88,15 +94,15 @@ class Menu:
                         url = old.url
                     self.tip_service.edit(id, name, url)
                 except Exception as e:
-                    self.io.write(e)
+                    self.io.write(self.color_message.red(e))
 
             if command == "4":
                 id = self.io.read("Tip id to remove: ")
                 try:
                     remove_status = self.tip_service.remove_tip(id)
-                    self.io.write("Tip removed")
+                    self.io.write(self.color_message.green("Tip removed"))
                 except Exception as e:
-                    self.io.write(e)
+                    self.io.write(self.color_message.red(e))
 
             if command == "5":
                 i = self.io.read("search: ")
@@ -116,7 +122,7 @@ class Menu:
                         read = 0
                     self.tip_service.mark_as_read(read, id)
                 except Exception as e:
-                    self.io.write(e)
+                    self.io.write(self.color_message.red(e))
 
             if command == "7":
                 if self.filter == "ALL":
