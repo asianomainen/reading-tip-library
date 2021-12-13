@@ -7,7 +7,7 @@ def drop_tables(connection):
 def create_tables(connection):
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS \
-        Tips (id INTEGER PRIMARY KEY, name TEXT, url TEXT, read INTEGER, favourite INTEGER)")
+        Tips (id INTEGER PRIMARY KEY, name TEXT, url TEXT, read INTEGER)")
 
 def reset_database():
     connection = get_database_connection()
