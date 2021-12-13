@@ -39,7 +39,7 @@ class Menu:
         self.io.write("")
         for command in COMMANDS:
             self.io.write(self.color_message.cyan(COMMANDS[command]))
-    
+
     def print_help(self):
         for help in HELP:
             self.io.write(HELP[help])
@@ -48,7 +48,7 @@ class Menu:
         help_messages = []
         for help_info in HELP:
             help_messages.append(HELP[help_info])
-        
+
         return help_messages
 
     def run(self):
@@ -131,7 +131,7 @@ class Menu:
                     self.filters = "READ"
                 elif self.filters == "READ":
                     self.filters = "ALL"
-            
+
             if command == "h":
                 self.print_help()
 
