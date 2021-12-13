@@ -6,15 +6,15 @@ class Colors:
     END = '\033[0m'
 
 class Color_message:
-    def red(text):
+    def red(text): # pylint: disable=no-self-argument
         return f"{Colors.RED}{text}{Colors.END}"
 
-    def cyan(text):
+    def cyan(text): # pylint: disable=no-self-argument
         return f"{Colors.CYAN}{text}{Colors.END}"
 
-    def green(text):
+    def green(text): # pylint: disable=no-self-argument
         return f"{Colors.GREEN}{text}{Colors.END}"
 
-    def yellow(text):
+    def yellow(text): # pylint: disable=no-self-argument
         return f"{Colors.YELLOW}{text}{Colors.END}"
         

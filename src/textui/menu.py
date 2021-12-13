@@ -37,21 +37,14 @@ class Menu:
 
     def print_commands(self):
         self.io.write("")
-        for command in COMMANDS:
-            self.io.write(self.color_message.cyan(COMMANDS[command]))
+        for command in COMMANDS.values():
+            self.io.write(self.color_message.cyan(command))
 
     def print_help(self):
-        for help_info in HELP:
-            self.io.write(HELP[help_info])
+        for help_info in HELP.values():
+            self.io.write(help_info)
 
-    def get_help(self):
-        help_messages = []
-        for help_info in HELP:
-            help_messages.append(HELP[help_info])
-
-        return help_messages
-
-    def run(self):
+    def run(self): # pylint: disable=too-many-branches disable=too-many-statements
         self.io.write("Welcome dear reader")
         self.print_commands()
 
@@ -70,7 +63,7 @@ class Menu:
                     url = self.io.read("url: ")
                 try:
                     self.tip_service.create(name, url)
-                except Exception as e:
+                except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
             if command == "2":
@@ -93,7 +86,7 @@ class Menu:
                     if len(url) == 0:
                         url = old.url
                     self.tip_service.edit(tip_id, name, url)
-                except Exception as e:
+                except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
             if command == "4":
@@ -101,7 +94,7 @@ class Menu:
                 try:
                     self.tip_service.remove_tip(tip_id)
                     self.io.write(self.color_message.green("Tip removed"))
-                except Exception as e:
+                except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
             if command == "5":
@@ -121,7 +114,7 @@ class Menu:
                     else:
                         read = 0
                     self.tip_service.mark_as_read(read, tip_id)
-                except Exception as e:
+                except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
             if command == "7":

@@ -1,6 +1,6 @@
 from stub_io import StubIO
 from textui.color_message import Color_message
-from textui.menu import Menu
+from textui.menu import Menu, HELP
 from services.tipservice import tip_service
 from initialize_database import initialize_database, reset_database
 
@@ -33,7 +33,7 @@ class robotLibrary:
         self.output_should_contain(message)
 
     def output_should_contain_help(self):
-        help_messages = self._menu.get_help()
+        help_messages = HELP.values()
         for help_info in help_messages:
             self.output_should_contain(help_info)
 
