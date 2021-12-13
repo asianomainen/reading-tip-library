@@ -41,8 +41,8 @@ class Menu:
             self.io.write(self.color_message.cyan(COMMANDS[command]))
 
     def print_help(self):
-        for help in HELP:
-            self.io.write(HELP[help])
+        for help_info in HELP:
+            self.io.write(HELP[help_info])
 
     def get_help(self):
         help_messages = []
