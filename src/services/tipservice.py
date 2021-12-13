@@ -35,8 +35,8 @@ class TipService:
     def get_tip(self, tip_id):
         try:
             tip = self.tip_repository.find_tip(tip_id)[1]
-        except:
-            raise Exception("Invalid ID")
+        except Exception as e:
+            raise Exception("Invalid ID") from e
         return tip
 
     def remove_tip(self, tip_id):
