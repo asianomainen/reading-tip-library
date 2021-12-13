@@ -8,8 +8,8 @@ class TipRepository:
         self._connection = get_database_connection()
 
     def create_tip(self, tip):
-        sql = "INSERT INTO Tips (name, url, read) VALUES (?, ?, ?)"
-        self._connection.execute(sql, (tip.name, tip.url, 0))
+        sql = "INSERT INTO Tips (name, url, read, favourite) VALUES (?, ?, ?, ?)"
+        self._connection.execute(sql, (tip.name, tip.url, 0, 0))
         self._connection.commit()
 
     def edit_tip(self, tip_id, tip):
@@ -22,11 +22,16 @@ class TipRepository:
         res = self._connection.execute(sql, (tip_id,)).fetchone()
         if res is None:
             return None
-        return (res["id"], Tip(res["name"], res["url"], res["read"]))
+        return (res["id"], Tip(res["name"], res["url"], res["read"], res["favourite"]))
 
     def mark_as_read(self, tip_id, tip):
         sql = "UPDATE Tips SET read = ? WHERE id == ?"
         self._connection.execute(sql, (tip.read, tip_id,))
+        self._connection.commit()
+
+    def mark_as_favourite(self, tip_id, tip):
+        sql = "UPDATE Tips SET favourite = ? WHERE id == ?"
+        self._connection.execute(sql, (tip.favourite, tip_id))
         self._connection.commit()
 
     def remove_tip(self, tip_id):
@@ -34,17 +39,17 @@ class TipRepository:
         self._connection.execute(sql, (tip_id,))
         self._connection.commit()
 
-    def find_all(self, filters="all"):
+    def find_all(self, filter="all"):
         tips = []
-        if filters == "all":
+        if filter == "all":
             sql = "SELECT * FROM Tips"
-        elif filters == "read":
+        elif filter == "read":
             sql = "SELECT * FROM Tips WHERE read == 1"
         else:
             sql = "SELECT * FROM Tips WHERE read == 0"
         result = self._connection.execute(sql)
         for row in result:
-            tips.append((row["id"], Tip(row["name"], row["url"], row["read"])))
+            tips.append((row["id"], Tip(row["name"], row["url"], row["read"], row["favourite"])))
         return tips
 
     def clear(self):

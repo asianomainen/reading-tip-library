@@ -61,6 +61,8 @@ class FakeTipRepository:
                 tips.append(tip)
         return tips
 
+    def mark_as_favourite(self, tip_id, tip):
+        self.tips[tip_id-1] = (tip_id, tip)
 
 class TestTipService(unittest.TestCase):
 
@@ -146,3 +148,9 @@ class TestTipService(unittest.TestCase):
         self.tipservice.mark_as_read(1,0)
         tips = self.tipservice.get_all("not read")
         self.assertEqual(len(list(tips)), 1)
+
+    def test_mark_tip_as_favourite(self):
+        self.tipservice.create("how to test", "www.test.test")
+        self.tipservice.mark_as_favourite(1, 1)
+        found_tip = self.tipservice.get_tip(1)
+        self.assertEqual(found_tip.favourite, 1)

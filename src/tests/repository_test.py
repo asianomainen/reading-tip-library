@@ -83,4 +83,12 @@ class TestTipRepository(unittest.TestCase):
 
         tips = tip_repository.find_all()
         self.assertEqual(len(tips), 2)
+
+    def test_mark_as_favourite(self):
+        tip = Tip("testing", "www.test.tt")
+        tip_repository.create_tip(tip)
+        tip.favourite = 1
+        tip_repository.mark_as_favourite(1, tip)
+        found_tip = tip_repository.find_tip(1)
+        self.assertEqual(found_tip[1].favourite, 1)
         

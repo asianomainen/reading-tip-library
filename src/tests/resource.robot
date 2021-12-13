@@ -26,6 +26,9 @@ Input 6 Command
 Input 7 Command
     Input  7
 
+Input 8 Command
+    Input  8
+
 Input h Command
     Input  h
 
@@ -90,3 +93,8 @@ Change Tip Read Status
 
 Change Read Filter Setting
     Input 7 Command
+
+Change Tip Favourite Status
+    [Arguments]  ${id}
+    Input 8 Command
+    Input  ${id}

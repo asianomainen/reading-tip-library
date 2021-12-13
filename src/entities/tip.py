@@ -1,6 +1,7 @@
 
 class Tip:
-    def __init__(self, name, url, read=0):
+    def __init__(self, name, url, read=0, favourite=0,):
         self.name = name
         self.url = url
         self.read = read
+        self.favourite = favourite

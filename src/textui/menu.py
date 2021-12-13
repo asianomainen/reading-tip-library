@@ -6,6 +6,7 @@ COMMANDS = {
     "5": "5 Search tip",
     "6": "6 Mark tip as read",
     "7": "7 Cycle filters",
+    "8": "8 Mark tip as favourite",
     "h": "h Help",
     "x": "x Quit"
 }
@@ -18,6 +19,7 @@ HELP= {
     "5": "5 Search tip, search for a certain tip in database",
     "6": "6 Mark tip as read, option to mark a tip with read",
     "7": "7 Cycle filters, modify filters determining what tips are displayed",
+    "8": "8 Mark the specified tip as a favourite, or undo the marking",
     "h": "h Help",
     "x": "x Quit, exit reading-tip library"
 }
@@ -72,7 +74,11 @@ class Menu:
                     tip_id = tip[0]
                     name = tip[1].name
                     url = tip[1].url
-                    self.io.write(f"id:{tip_id} {name}, {url}")
+                    if tip[1].favourite == 0:
+                        favourite = ""
+                    else:
+                        favourite = self.color_message.yellow("*")
+                    self.io.write(f"{favourite}id:{tip_id} {name}, {url}")
 
             if command == "3":
                 tip_id = self.io.read("Tip id to edit: ")
@@ -124,6 +130,18 @@ class Menu:
                     self.filters = "READ"
                 elif self.filters == "READ":
                     self.filters = "ALL"
+
+            if command == "8":
+                tip_id = self.io.read("tip id to mark: ")
+                try:
+                    old = self.tip_service.get_tip(tip_id)
+                    if old.favourite == 0:
+                        favourite = 1
+                    else:
+                        favourite = 0
+                    self.tip_service.mark_as_favourite(favourite, tip_id)
+                except Exception as e: # pylint: disable=broad-except
+                    self.io.write(self.color_message.red(e))
 
             if command == "h":
                 self.print_help()

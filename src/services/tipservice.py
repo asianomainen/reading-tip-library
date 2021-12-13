@@ -20,9 +20,14 @@ class TipService:
         self.tip_repository.edit_tip(tip_id, tip)
 
     def mark_as_read(self, read, tip_id):
-        old = self.get_tip(tip_id)
-        tip = Tip(old.name, old.url, read)
+        tip = self.get_tip(tip_id)
+        tip.read = read
         self.tip_repository.mark_as_read(tip_id, tip)
+
+    def mark_as_favourite(self, favourite, tip_id):
+        tip = self.get_tip(tip_id)
+        tip.favourite = favourite
+        self.tip_repository.mark_as_favourite(tip_id, tip)
 
     def get_all(self, filters="all"):
         return self.tip_repository.find_all(filters)

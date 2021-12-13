@@ -32,6 +32,11 @@ class robotLibrary:
             message = self.color_message.yellow(text)
         self.output_should_contain(message)
 
+    def output_should_contain_favourited(self, text):
+        star = self.color_message.yellow("*")
+        message = f"{star}{text}"
+        self.output_should_contain(message)
+
     def output_should_contain_help(self):
         help_messages = HELP.values()
         for help_info in help_messages:
