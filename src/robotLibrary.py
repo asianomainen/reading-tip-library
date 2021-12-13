@@ -1,8 +1,8 @@
 from stub_io import StubIO
+from textui.color_message import Color_message
 from textui.menu import Menu
 from services.tipservice import tip_service
 from initialize_database import initialize_database, reset_database
-from textui.color_message import Color_message
 
 class robotLibrary:
     def __init__(self):

@@ -1,7 +1,7 @@
+from textui.color_message import Color_message
 from textui.consoleio import ConsoleIO
 from textui.menu import Menu
 from services.tipservice import tip_service
-from textui.color_message import Color_message
 
 def main():
     io = ConsoleIO
