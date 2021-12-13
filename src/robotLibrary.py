@@ -34,8 +34,8 @@ class robotLibrary:
 
     def output_should_contain_help(self):
         help_messages = self._menu.get_help()
-        for help in help_messages:
-            self.output_should_contain(help)
+        for help_info in help_messages:
+            self.output_should_contain(help_info)
 
     def output_should_not_contain(self, value):
         outputs = self._io.outputs
