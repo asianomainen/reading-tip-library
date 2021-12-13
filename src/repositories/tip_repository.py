@@ -9,13 +9,11 @@ class TipRepository:
 
     def create_tip(self, tip):
         sql = "INSERT INTO Tips (name, url, read) VALUES (?, ?, ?)"
-        self._connection.execute(sql, (tip.name, tip.url, 0))
-        self._connection.commit()
+        self._execute(sql, [tip.name, tip.url, 0])
 
     def edit_tip(self, tip_id, tip):
         sql = "UPDATE Tips SET name = ?, url = ? WHERE id == ?"
-        self._connection.execute(sql, (tip.name, tip.url, tip_id))
-        self._connection.commit()
+        self._execute(sql, [tip.name, tip.url, tip_id])
 
     def find_tip(self, tip_id):
         sql = "SELECT * FROM Tips WHERE id = ?"
@@ -26,13 +24,11 @@ class TipRepository:
 
     def mark_as_read(self, tip_id, tip):
         sql = "UPDATE Tips SET read = ? WHERE id == ?"
-        self._connection.execute(sql, (tip.read, tip_id,))
-        self._connection.commit()
+        self._execute(sql, [tip.read, tip_id])
 
     def remove_tip(self, tip_id):
         sql = "DELETE FROM Tips WHERE id = ?"
-        self._connection.execute(sql, (tip_id,))
-        self._connection.commit()
+        self._execute(sql, [tip_id])
 
     def find_all(self, filters="all"):
         tips = []
@@ -49,7 +45,10 @@ class TipRepository:
 
     def clear(self):
         sql = "DELETE FROM Tips"
-        self._connection.execute(sql)
+        self._execute(sql, [])
+
+    def _execute(self, query, variables):
+        self._connection.execute(query, variables)
         self._connection.commit()
 
 tip_repository = TipRepository()
