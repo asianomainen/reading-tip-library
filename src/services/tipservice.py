@@ -19,14 +19,20 @@ class TipService:
         tip = Tip(name, url)
         self.tip_repository.edit_tip(tip_id, tip)
 
-    def mark_as_read(self, read, tip_id):
+    def mark_as_read(self, tip_id):
         tip = self.get_tip(tip_id)
-        tip.read = read
+        if tip.read == 0:
+            tip.read = 1
+        else:
+            tip.read = 0
         self.tip_repository.mark_as_read(tip_id, tip)
 
-    def mark_as_favourite(self, favourite, tip_id):
+    def mark_as_favourite(self, tip_id):
         tip = self.get_tip(tip_id)
-        tip.favourite = favourite
+        if tip.favourite == 0:
+            tip.favourite = 1
+        else:
+            tip.favourite = 0
         self.tip_repository.mark_as_favourite(tip_id, tip)
 
     def get_all(self, filters="all"):

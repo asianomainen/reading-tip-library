@@ -39,14 +39,6 @@ class FakeTipRepository:
         return self.tips[id-1]
 
     def mark_as_read(self, id, tip):
-        name = tip.name
-        url = tip.url
-        read = tip.read
-        if read == 0:
-            read =1
-        else:
-            read = 0
-        tip = Tip(name, url, read)
         self.tips[id-1]= (id,tip)
 
     def find_only_not_read(self, only_not_read):
@@ -136,21 +128,20 @@ class TestTipService(unittest.TestCase):
     def test_mark_tip_as_read_and_find(self):
         self.tipservice.create("how to test", "www.test.test")
         self.tipservice.create("how to test2", "www.test.test")
-        self.tipservice.mark_as_read(0,0)
+        self.tipservice.mark_as_read(1)
         tips = self.tipservice.get_all("read")
         self.assertEqual(len(list(tips)), 1)
 
     def test_mark_read_tip_as_unread(self):
         self.tipservice.create("how to test", "www.test.test")
         self.tipservice.create("how to test2", "www.test.test")
-        self.tipservice.mark_as_read(0,0)
-        self.tipservice.mark_as_read(0,1)
-        self.tipservice.mark_as_read(1,0)
+        self.tipservice.mark_as_read(1)
+ 
         tips = self.tipservice.get_all("not read")
         self.assertEqual(len(list(tips)), 1)
 
     def test_mark_tip_as_favourite(self):
         self.tipservice.create("how to test", "www.test.test")
-        self.tipservice.mark_as_favourite(1, 1)
+        self.tipservice.mark_as_favourite(1)
         found_tip = self.tipservice.get_tip(1)
         self.assertEqual(found_tip.favourite, 1)

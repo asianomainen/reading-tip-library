@@ -124,12 +124,7 @@ class Menu:
             if command == "6":
                 tip_id = self.io.read("tip id to mark: ")
                 try:
-                    old = self.tip_service.get_tip(tip_id)
-                    if old.read == 0:
-                        read = 1
-                    else:
-                        read = 0
-                    self.tip_service.mark_as_read(read, tip_id)
+                    self.tip_service.mark_as_read(tip_id)
                 except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
@@ -144,12 +139,7 @@ class Menu:
             if command == "8":
                 tip_id = self.io.read("tip id to mark: ")
                 try:
-                    old = self.tip_service.get_tip(tip_id)
-                    if old.favourite == 0:
-                        favourite = 1
-                    else:
-                        favourite = 0
-                    self.tip_service.mark_as_favourite(favourite, tip_id)
+                    self.tip_service.mark_as_favourite(tip_id)
                 except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
