@@ -30,7 +30,7 @@ class TipRepository:
         if res is None:
             return None
         return res["id"]
-        
+
     def create_tip(self, tip):
         sql = "INSERT INTO Tips (name, url, read, favourite) VALUES (?, ?, ?, ?)"
         self._connection.execute(sql, (tip.name, tip.url, 0, 0))
@@ -83,7 +83,8 @@ class TipRepository:
         result = self._connection.execute(sql)
         for row in result:
             tags = self.get_tags(row["id"])
-            tips.append((row["id"], Tip(row["name"], row["url"], tags, row["read"], row["favourite"])))
+            tips.append((row["id"], Tip(row["name"], 
+            row["url"], tags, row["read"], row["favourite"])))
         return tips
 
     def clear(self):

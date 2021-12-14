@@ -7,7 +7,7 @@ class TipService:
     def __init__(self, tip_repo=tip_repository):
         self.tip_repository = tip_repo
 
-    def create(self, name, url, tags=[]):
+    def create(self, name, url, tags=[]): # pylint: disable=dangerous-default-value
         if len(name) == 0:
             raise Exception("Name cannot be empty")
         if len(url) == 0 or url[0:4] != "www." or url[4:].count(".") != 1:
