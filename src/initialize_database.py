@@ -8,6 +8,8 @@ def create_tables(connection):
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS \
         Tips (id INTEGER PRIMARY KEY, name TEXT, url TEXT, read INTEGER, favourite INTEGER)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Tags (id INTEGER PRIMARY KEY, name TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Tiptags (tipid INTEGER REFERENCES Tips, tagid INTEGER REFERENCES tags)")
 
 def reset_database():
     connection = get_database_connection()

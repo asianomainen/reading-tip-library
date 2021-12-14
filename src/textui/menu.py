@@ -64,7 +64,10 @@ class Menu:
                     self.io.write(self.color_message.red("Invalid url"))
                     url = self.io.read("url: ")
                 try:
-                    self.tip_service.create(name, url)
+                    tags = self.io.read("tags(Optional, multiple tags seperated by ,): ")
+                    tags.strip()
+                    tags = tags.split(",")
+                    self.tip_service.create(name, url, tags)
                 except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
 
@@ -74,6 +77,8 @@ class Menu:
                     tip_id = tip[0]
                     name = tip[1].name
                     url = tip[1].url
+                    tags = tip[1].tags
+                    tags = ",".join(tags)
                     if tip[1].favourite == 0:
                         favourite = ""
                     else:
@@ -83,7 +88,7 @@ class Menu:
                             f"{favourite}id:{tip_id} {name}, {url}")
                             )
                     else:
-                        self.io.write(f"{favourite}id:{tip_id} {name}, {url}")
+                        self.io.write(f"{favourite}id:{tip_id} {name}, {url}, tags: {tags}")
 
             if command == "3":
                 tip_id = self.io.read("Tip id to edit: ")

@@ -7,12 +7,12 @@ class TipService:
     def __init__(self, tip_repo=tip_repository):
         self.tip_repository = tip_repo
 
-    def create(self, name, url):
+    def create(self, name, url, tags=[]):
         if len(name) == 0:
             raise Exception("Name cannot be empty")
         if len(url) == 0 or url[0:4] != "www." or url[4:].count(".") != 1:
             raise Exception("Invalid url")
-        tip = Tip(name, url)
+        tip = Tip(name, url, tags)
         self.tip_repository.create_tip(tip)
 
     def edit(self, tip_id, name, url):
