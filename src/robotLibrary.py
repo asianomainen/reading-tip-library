@@ -56,7 +56,7 @@ class robotLibrary:
             command = self.color_message.cyan(command)
             if outputs.count(command) is not 2:
                 raise AssertionError(
-                    f"Number of tips {str(number_of_tips)} is not {str(value)}"
+                    f"Commands are not printed after every command given"
                 )
 
     def database_should_contain_tips(self, value):
