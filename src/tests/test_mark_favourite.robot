@@ -8,5 +8,5 @@ Favourited Tip Shows Star
     Input 2 Command
     Input x Command
     Run Application
-    Output Should Contain Favourited  id:1 newTip1, www.test.test
+    Output Should Contain Favourited  id:1 newTip1, www.test.test, tags: Book
     
