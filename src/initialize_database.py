@@ -3,6 +3,8 @@ from database_connection import get_database_connection
 def drop_tables(connection):
     cursor = connection.cursor()
     cursor.execute("DROP TABLE IF EXISTS Tips")
+    cursor.execute("DROP TABLE IF EXISTS Tags")
+    cursor.execute("DROP TABLE IF EXISTS Tiptags")
 
 def create_tables(connection):
     cursor = connection.cursor()
