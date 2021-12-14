@@ -79,7 +79,9 @@ class Menu:
                     else:
                         favourite = self.color_message.yellow("*")
                     if tip[1].read == 1:
-                        self.io.write(self.color_message.green(f"{favourite}id:{tip_id} {name}, {url}"))
+                        self.io.write(self.color_message.green(
+                            f"{favourite}id:{tip_id} {name}, {url}")
+                            )
                     else:
                         self.io.write(f"{favourite}id:{tip_id} {name}, {url}")
 
