@@ -78,6 +78,10 @@ Create Tip Without url
     Input 1 Command
     Input New Tip  test  \  Book
 
+Create Tip Without tag
+    Input 1 Command
+    Input New Tip  newTip  www.test.test  \
+
 Create Tip With Invalid url
     Input 1 Command
     Input New Tip  test  ww.  Book
