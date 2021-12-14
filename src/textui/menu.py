@@ -78,7 +78,10 @@ class Menu:
                         favourite = ""
                     else:
                         favourite = self.color_message.yellow("*")
-                    self.io.write(f"{favourite}id:{tip_id} {name}, {url}")
+                    if tip[1].read == 1:
+                        self.io.write(self.color_message.green(f"{favourite}id:{tip_id} {name}, {url}"))
+                    else:
+                        self.io.write(f"{favourite}id:{tip_id} {name}, {url}")
 
             if command == "3":
                 tip_id = self.io.read("Tip id to edit: ")
