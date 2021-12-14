@@ -6,7 +6,7 @@ COMMANDS = {
     "5": "5 Search tip",
     "6": "6 Mark tip as read",
     "7": "7 Cycle filters",
-    "8": "8 Mark tip as favourite",
+    "8": "8 Add/Remove tip as favourite",
     "h": "h Help",
     "x": "x Quit"
 }
