@@ -91,4 +91,20 @@ class TestTipRepository(unittest.TestCase):
         tip_repository.mark_as_favourite(1, tip)
         found_tip = tip_repository.find_tip(1)
         self.assertEqual(found_tip[1].favourite, 1)
-        
+
+    def test_create_tip_with_tags(self):
+        tip = Tip("book", "www.test.test", ["tag1", "tag2"])
+        tip_repository.create_tip(tip)
+        found_tip = tip_repository.find_tip(1)
+        self.assertEqual(len(found_tip[1].tags), 2)
+
+    def test_create_and_find_tag(self):
+        tip_repository.create_tag("tagi")
+        self.assertEqual(tip_repository.tag_exists("tagi"), True)
+
+    def test_create_tip_with_existing_tag(self):
+        tip_repository.create_tag("tagi")
+        tip = Tip("book", "www.test.test", ["tagi", "tag2"])
+        tip_repository.create_tip(tip)
+        found_tip = tip_repository.find_tip(1)
+        self.assertEqual(len(found_tip[1].tags), 2)

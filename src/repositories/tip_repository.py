@@ -91,4 +91,12 @@ class TipRepository:
         self._connection.execute(sql)
         self._connection.commit()
 
+        sql = "DELETE FROM Tags"
+        self._connection.execute(sql)
+        self._connection.commit()
+
+        sql = "DELETE FROM Tiptags"
+        self._connection.execute(sql)
+        self._connection.commit()
+
 tip_repository = TipRepository()

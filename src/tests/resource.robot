@@ -33,53 +33,54 @@ Input h Command
     Input  h
 
 Input New Tip
-    [Arguments]  ${name}  ${url}
+    [Arguments]  ${name}  ${url}  ${tags}
     Input  ${name}
     Input  ${url}
+    Input  ${tags}
 
 Create Tip
     Input 1 Command
-    Input New Tip  newTip  www.test.test
+    Input New Tip  newTip  www.test.test  \
 
 Change Tip
     Input 3 Command
     Input  1
-    Input New Tip  changedTip  www.test.test
+    Input New Tip  changedTip  www.test.test  \
 
 Change Tip Name
     Input 3 Command
     Input  1
-    Input New Tip  changedTip  \
+    Input New Tip  changedTip  \  
 
 Change Tip Url
     Input 3 Command
     Input  1
-    Input New Tip  \  www.test.test
+    Input New Tip  \  www.test.test  \
 
 Change Tip With Empty Values
     Input 3 Command
     Input  1
-    Input New Tip  \  \
+    Input New Tip  \  \  \
 
 Create Three Tips
     Input 1 Command
-    Input New Tip  newTip1  www.test.test
+    Input New Tip  newTip1  www.test.test  \
     Input 1 Command
-    Input New Tip  newTip2  www.test.test
+    Input New Tip  newTip2  www.test.test  \
     Input 1 Command
-    Input New Tip  newTip3  www.test.test
+    Input New Tip  newTip3  www.test.test  \
 
 Create Tip Without name
     Input 1 Command
-    Input New Tip  \  www.test.test
+    Input New Tip  \  www.test.test  \
     
 Create Tip Without url
     Input 1 Command
-    Input New Tip  test  \ 
+    Input New Tip  test  \  \
 
 Create Tip With Invalid url
     Input 1 Command
-    Input New Tip  test  ww.
+    Input New Tip  test  ww.  \
 
 Remove Tip
     [Arguments]  ${id}
