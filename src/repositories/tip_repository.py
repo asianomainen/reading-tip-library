@@ -83,7 +83,7 @@ class TipRepository:
         result = self._connection.execute(sql)
         for row in result:
             tags = self.get_tags(row["id"])
-            tips.append((row["id"], Tip(row["name"], 
+            tips.append((row["id"], Tip(row["name"],
             row["url"], tags, row["read"], row["favourite"])))
         return tips
 
