@@ -9,6 +9,6 @@ Reading Tips Can Be Browsed
     Input x Command
     Run Application
     Database Should Contain Tips  3
-    Output Should Contain  id:1 newTip1, www.test.test
-    Output Should Contain  id:2 newTip2, www.test.test
-    Output Should Contain  id:3 newTip3, www.test.test
+    Output Should Contain  id:1 newTip1, www.test.test, tags: Book
+    Output Should Contain  id:2 newTip2, www.test.test, tags: Book
+    Output Should Contain  id:3 newTip3, www.test.test, tags: Book
