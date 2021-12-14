@@ -1,6 +1,6 @@
 from stub_io import StubIO
 from textui.color_message import Color_message
-from textui.menu import Menu, HELP
+from textui.menu import Menu, HELP, COMMANDS
 from services.tipservice import tip_service
 from initialize_database import initialize_database, reset_database
 
@@ -48,6 +48,16 @@ class robotLibrary:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
+
+    def output_should_contain_commands(self):
+        outputs = self._io.outputs
+        commands = COMMANDS.values()
+        for command in commands:
+            command = self.color_message.cyan(command)
+            if outputs.count(command) is not 2:
+                raise AssertionError(
+                    f"Number of tips {str(number_of_tips)} is not {str(value)}"
+                )
 
     def database_should_contain_tips(self, value):
         number_of_tips = len(self._tip_service.get_all())
