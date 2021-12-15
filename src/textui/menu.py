@@ -95,8 +95,10 @@ class Menu:
                         self.io.write(favourite + tip)
 
             if command == "3":
-                tip_id = self.io.read("Tip id to edit: ")
-                print(self.tip_service.get_tip(tip_id).name)
+                try:
+                    tip_id = self.io.read("Tip id to edit: ")
+                except Exception as e:
+                    self.io.write(self.color_message.red(e))
                 try:
                     old = self.tip_service.get_tip(tip_id)
                     name = self.io.read("New name (leave blank to keep old): ")
