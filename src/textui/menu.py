@@ -97,7 +97,7 @@ class Menu:
             if command == "3":
                 try:
                     tip_id = self.io.read("Tip id to edit: ")
-                except Exception as e:
+                except Exception as e: # pylint: disable=broad-except
                     self.io.write(self.color_message.red(e))
                 try:
                     old = self.tip_service.get_tip(tip_id)
