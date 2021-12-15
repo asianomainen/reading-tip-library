@@ -72,6 +72,10 @@ class TipRepository:
         self._connection.execute(sql, (tip_id,))
         self._connection.commit()
 
+        sql = "DELETE FROM Tiptags WHERE tipid = ?"
+        self._connection.execute(sql, (tip_id,))
+        self._connection.commit()
+
     def find_all(self, filters="all"):
         tips = []
         if filters == "all":
