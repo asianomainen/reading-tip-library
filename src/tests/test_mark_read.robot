@@ -10,4 +10,4 @@ Read Tips Shown In Green Colour
     Input 2 Command
     Input x Command
     Run Application
-    Output Should Contain Colored  green  id:1 newTip1, www.test.test
+    Output Should Contain Colored  green  id:1 newTip1, www.test.test, tags: Book
