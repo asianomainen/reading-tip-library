@@ -89,7 +89,10 @@ class Menu:
                             )
                     else:
                         tip = f"id:{tip_id} {name}, {url}, tags: {tags}"
-                    self.io.write(favourite + tip)
+                    if favourite == "":
+                        self.io.write(tip)
+                    else: 
+                        self.io.write(favourite + tip)
 
             if command == "3":
                 tip_id = self.io.read("Tip id to edit: ")
