@@ -26,7 +26,6 @@ class TipRepository:
     def tag_exists(self, name):
         sql = "SELECT * FROM Tags WHERE name = ?"
         res = self._connection.execute(sql, (name,)).fetchone()
-        print(res)
         if res is None:
             return None
         return res["id"]
