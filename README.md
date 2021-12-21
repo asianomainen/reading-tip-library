@@ -2,6 +2,9 @@
 ![GitHub Actions](https://github.com/asianomainen/reading-tip-library/workflows/CI/badge.svg)  
 [![codecov](https://codecov.io/gh/asianomainen/reading-tip-library/branch/main/graph/badge.svg?token=IM4BJC00JG)](https://codecov.io/gh/asianomainen/reading-tip-library)
 
+## Project report
+[Link to project report](https://docs.google.com/document/d/1xAEykxp7c1_VvfG7exvA3oFjSuYkrG2kYzBhyz4gdYU/edit?usp=sharing)
+
 ## Installation and user guide
 
 #### Install dependencies
@@ -55,3 +58,4 @@ poetry run invoke coverage-report
 ## Documentation
 [Link to Backlog](https://docs.google.com/spreadsheets/d/1A3XL6Ixnftyqe45tI8JnFBjwFhiAg_5na4TVUxUSTFI/edit?usp=sharing)  
 [Definition of Done](https://github.com/asianomainen/reading-tip-library/blob/main/Documentation/definitionofdone.md)
+[Project report](https://docs.google.com/document/d/1xAEykxp7c1_VvfG7exvA3oFjSuYkrG2kYzBhyz4gdYU/edit?usp=sharing)
